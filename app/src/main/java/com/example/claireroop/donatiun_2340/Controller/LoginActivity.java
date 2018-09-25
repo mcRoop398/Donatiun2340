@@ -1,8 +1,9 @@
-package com.example.claireroop.donatiun_2340;
+package com.example.claireroop.donatiun_2340.Controller;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -28,6 +29,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.claireroop.donatiun_2340.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -344,6 +347,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
+        }
+
+        private void launchMainActivity() {
+            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(i);
         }
     }
 }
