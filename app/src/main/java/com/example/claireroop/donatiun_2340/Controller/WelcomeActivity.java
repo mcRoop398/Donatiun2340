@@ -18,6 +18,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
     }
 
+
     /**
      * onClick handler to transition to login screen.
      * @param v Login button
@@ -26,6 +27,14 @@ public class WelcomeActivity extends AppCompatActivity {
     public void onClickLoginButton(View v) {
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(i);
+
     }
+
+    public void onClickRegisterButton(View v) {
+        Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+        startActivity(i);
+
+    }
+
 
 }

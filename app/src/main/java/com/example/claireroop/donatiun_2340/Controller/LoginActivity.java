@@ -65,12 +65,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+
+    /*
+    Button btn = (Button)findViewById(R.id.open_activity_button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MyOtherActivity.class));
+            }
+        });
+     */
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -85,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = (Button) findViewById(R.id.login_button); // made change
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,8 +108,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+        mLoginFormView = findViewById(R.id.loginView); // made change
+        mProgressView = findViewById(R.id.progressBar); // made change
+        Button mCancelButton = (Button) findViewById(R.id.cancel_button);
+        mCancelButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void populateAutoComplete() {
@@ -279,7 +302,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
-        //mEmailView.setAdapter(adapter);
+        mEmailView.setAdapter(adapter);
     }
 
 
@@ -345,13 +368,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
+            //mAuthTask = null;
+            //showProgress(false);
+            finish();
         }
 
         private void launchMainActivity() {
-            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent i = new Intent(getApplicationContext(), WelcomeActivity.class); // made change
             startActivity(i);
         }
+
+        public void onClickCancelButton(View v) {
+            Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
+            startActivity(i);
+
+            //finish();
+        }
+
     }
 }
