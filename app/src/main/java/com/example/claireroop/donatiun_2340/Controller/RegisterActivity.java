@@ -3,6 +3,7 @@ package com.example.claireroop.donatiun_2340.Controller;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
@@ -47,7 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
             if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString())){
-                finish();
+                Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
+                startActivity(i);
             }
             else{
                 //Say user already created.

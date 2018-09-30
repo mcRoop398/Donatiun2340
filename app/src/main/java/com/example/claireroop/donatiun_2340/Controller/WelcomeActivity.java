@@ -16,6 +16,9 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+
+
     }
 
 
@@ -31,8 +34,9 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void onClickRegisterButton(View v) {
-        Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-        startActivity(i);
+        Intent intent02 = new Intent(getApplicationContext(), RegisterActivity.class);
+        //intent02.putExtra("userEmail", userEmail);
+        startActivity(intent02);
 
     }
 
