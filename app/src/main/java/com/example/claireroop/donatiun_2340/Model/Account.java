@@ -1,25 +1,17 @@
+package com.example.claireroop.donatiun_2340.Model;
+
 public class Account {
 
-
-
-    private String _username;
+    private String _email;
+    private String _name;
     private String _password;
     private Role _role;
-    private String _firstName;
-    private String _lastName;
-    private String _email;
 
-
-    public Account(String u, String p, Role r, String f, String l, String e){
-        _username = u;
-        _password = p;
-        _role = r;
-        _firstName = f;
-        _lastName = l;
-        _email = e;
-    }
-    public Account(String u, String p, Role r) {
-        this(u,p,r,null,null,null);
+    public Account(String email, String password, String name, Role role) {
+        _email = email;
+        _password = password;
+        _name = name;
+        _role = role;
     }
 
     //utilities
@@ -28,9 +20,6 @@ public class Account {
     }
     public boolean isUser() {
         return _role == Role.USER;
-    }
-    public boolean usernameEquals(String u) {
-        return u.equals(_username);
     }
     public boolean passwordEquals(String p) {
         return p.equals(_password);
@@ -43,40 +32,28 @@ public class Account {
     }
 
     //getters:
-    public String get_username() {
-        return _username;
-    }
     public String get_password() {
         return _password;
     }
     public Role get_role(){
         return _role;
     }
-    public String get_firstName() {
-        return _firstName;
-    }
-    public String get_lastName() {
-        return _lastName;
+    public String get_name(){
+        return _name;
     }
     public String get_email() {
         return _email;
     }
 
     //setters:
-    public void set_username(String u) {
-        _username = u;
-    }
     public void set_password(String p) {
         _password = p;
     }
     public void set_role(Role r) {
         _role = r;
     }
-    public void set_firstName(String f) {
-        _firstName = f;
-    }
-    public void set_lastName(String l) {
-        _lastName = l;
+    public void set_name(String name){
+        _name = name;
     }
     public void set_email(String e) {
         _email = e;

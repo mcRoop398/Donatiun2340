@@ -7,9 +7,11 @@ package com.example.claireroop.donatiun_2340.Model;
 @SuppressWarnings("ALL")
 public class Model {
     private static Model instance = new Model();
+    private static AccountList listOfusers;
 
     private Model() {
         super();
+        this.listOfusers = new AccountList();
     }
 
     /**
@@ -21,5 +23,9 @@ public class Model {
             instance = new Model();
         }
         return instance;
+    }
+
+    public static AccountList getListOfusers() {
+        return listOfusers;
     }
 }
