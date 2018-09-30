@@ -1,16 +1,12 @@
 package com.example.claireroop.donatiun_2340.Controller;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDialog;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 
 import com.example.claireroop.donatiun_2340.Model.AccountList;
 import com.example.claireroop.donatiun_2340.Model.Model;
@@ -40,26 +36,25 @@ public class RegisterActivity extends AppCompatActivity {
         _password = findViewById(R.id.password);
         _list = Model.getListOfusers();
 
-        /** Expected: if(Text fields are not empty)
-         *               if(new user was not in the list of emails) then finish
-         *               else{set email error - email already used}
-         *
-         */
 
-        if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
+        if (!TextUtils.isEmpty(_password.getText().toString()) && !isPasswordValid(_password.getText().toString())) {
+            _password.setError(getString(R.string.error_invalid_password));
+        } else if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
             if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString())){
                 Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
                 startActivity(i);
-            }
-            else{
-                //Say user already created.
+            } else{
                 _email.setError("Email already has an account linked.");
             }
-        }
-        else {
+        } else {
             alertDialog = new AlertDialog.Builder(this);
             alertDialog.setMessage("Please fill out required fields");
             alertDialog.show();
+        }
+
+
+        if(!isEmailValid(_email.getText().toString())){
+            _email.setError("Email Invalid");
         }
     }
 
@@ -67,6 +62,16 @@ public class RegisterActivity extends AppCompatActivity {
         //Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
         //startActivity(i);
         finish();
+    }
+
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+        return email.contains("@");
+    }
+
+    private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
+        return password.length() > 4;
     }
 
 }
