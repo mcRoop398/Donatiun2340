@@ -30,12 +30,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.claireroop.donatiun_2340.Model.Model;
 import com.example.claireroop.donatiun_2340.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import com.example.claireroop.donatiun_2340.Model.AccountList;
 
 /**
  * A login screen that offers login via email/password.
@@ -64,6 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private AccountList mAccountList;
 
 
     /*
@@ -185,9 +188,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         boolean cancel = false;
         View focusView = null;
 
+        mAccountList = Model.getListOfusers();
+
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
+            focusView = mPasswordView;
+            cancel = true;
+        } else if(!mAccountList.compareAccountToPassword(email, password)){
+            mPasswordView.setError("Invalid Password");
             focusView = mPasswordView;
             cancel = true;
         }
@@ -199,6 +208,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         } else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
+            focusView = mEmailView;
+            cancel = true;
+        } else if (!mAccountList.checkListForUser(email)){
+            mEmailView.setError("Create an account first");
             focusView = mEmailView;
             cancel = true;
         }

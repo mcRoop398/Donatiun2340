@@ -40,12 +40,12 @@ public class RegisterActivity extends AppCompatActivity {
         _list = Model.getListOfusers();
 
         /** Expected: if(Text fields are not empty)
-         *               if(finish - if new user was created/not already in the list of emails)
+         *               if(new user was not in the list of emails) then finish
          *               else{set email error - email already used}
          *
          */
 
-        if(!_name.getText().equals("") && !_email.getText().equals("") && !_password.getText().equals("")){
+        if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
             if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString())){
                 finish();
             }
@@ -54,16 +54,10 @@ public class RegisterActivity extends AppCompatActivity {
                 _email.setError("Email already has an account linked.");
             }
         }
-        else{
-            //This doesn't work just yet.
+        else {
             alertDialog = new AlertDialog.Builder(this);
             alertDialog.setMessage("Please fill out required fields");
             alertDialog.show();
-
-
-            //Please fill out fields
-//            FrameLayout f1 = v.findViewById(android.R.id.custom);
-//            f1.addView(v, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
     }
 
