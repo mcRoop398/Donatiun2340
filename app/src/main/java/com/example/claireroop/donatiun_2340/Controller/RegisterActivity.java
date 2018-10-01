@@ -49,7 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
     public void onClickSubmitButton(View v) {
         //Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
         //startActivity(i);
-        Log.println(Log.DEBUG,"MyApp","BUTTON PRESSED!!!");
         _name = findViewById(R.id.name);
         _email = findViewById(R.id.email);
         _password = findViewById(R.id.password);
