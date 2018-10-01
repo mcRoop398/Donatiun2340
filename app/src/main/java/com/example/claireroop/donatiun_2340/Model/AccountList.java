@@ -45,9 +45,9 @@ public class AccountList {
      * @param password
      * @return boolean - TRUE if user added : FALSE if userName already exists
      */
-    public boolean createNewUser(String email, String password, String name){
+    public boolean createNewUser(String email, String password, String name, Role role){
         if(checkListForUser(email) == false){
-            Account user = new Account(email, password, name, Role.USER);
+            Account user = new Account(email, password, name, role);
             addUser(user);
             return true;
         }
