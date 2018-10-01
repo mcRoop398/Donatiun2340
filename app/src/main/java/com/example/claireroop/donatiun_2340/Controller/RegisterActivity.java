@@ -5,8 +5,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -35,6 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //Initialize the AccountTypeSpinner
+        _AccountTypeSpinner = (Spinner) findViewById(R.id.AccountTypeSpinner);
+
         //set up adapted for spinner
         ArrayAdapter<Role> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, Role.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -44,11 +49,12 @@ public class RegisterActivity extends AppCompatActivity {
     public void onClickSubmitButton(View v) {
         //Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
         //startActivity(i);
+        Log.println(Log.DEBUG,"MyApp","BUTTON PRESSED!!!");
         _name = findViewById(R.id.name);
         _email = findViewById(R.id.email);
         _password = findViewById(R.id.password);
         _list = Model.getListOfusers();
-        _AccountTypeSpinner = findViewById(R.id.AccountTypeSpinner);
+
 
 
 
