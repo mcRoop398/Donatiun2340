@@ -16,10 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Controller.LoginActivity"
-            android:label="@string/app_name">
-
-        </activity>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".Controller.WelcomeActivity"
             android:label="Welcome-Screen">
@@ -29,9 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
         <activity
             android:name=".Controller.RegisterActivity"
             android:label="@string/title_activity_register"
@@ -39,7 +33,20 @@
         <activity
             android:name=".Controller.ResolutionActivity"
             android:label="@string/title_activity_resolution"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Controller.LocationListActivity"
+            android:label="@string/title_location_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Controller.LocationDetailActivity"
+            android:label="@string/title_location_detail"
+            android:parentActivityName=".Controller.LocationListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.claireroop.donatiun_2340.Controller.LocationListActivity" />
+        </activity>
     </application>
 
 </manifest>

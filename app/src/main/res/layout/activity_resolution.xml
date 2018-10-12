@@ -42,4 +42,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.351"
         tools:text="logout" />
+
+    <Button
+        android:id="@+id/view_locations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickLocationsButton"
+        android:text="View Locations"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="313dp" />
 </android.support.constraint.ConstraintLayout>

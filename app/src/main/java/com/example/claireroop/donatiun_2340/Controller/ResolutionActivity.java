@@ -25,4 +25,10 @@ public class ResolutionActivity extends AppCompatActivity {
 
     }
 
+    public void onClickLocationsButton(View v) {
+        Intent i = new Intent(getApplicationContext(), LocationListActivity.class);
+        startActivity(i);
+
+    }
+
 }
