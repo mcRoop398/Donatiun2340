@@ -35,17 +35,17 @@
             android:label="@string/title_activity_resolution"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Controller.LocationListActivity"
+            android:name=".Controller.DataItemListActivity"
             android:label="@string/title_location_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Controller.LocationDetailActivity"
+            android:name=".Controller.DataItemDetailActivity"
             android:label="@string/title_location_detail"
-            android:parentActivityName=".Controller.LocationListActivity"
+            android:parentActivityName=".Controller.DataItemListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.claireroop.donatiun_2340.Controller.LocationListActivity" />
+                android:value="com.example.claireroop.donatiun_2340.Controller.DataItemListActivity" />
         </activity>
     </application>
 
