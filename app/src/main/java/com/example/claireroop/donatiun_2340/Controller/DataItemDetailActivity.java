@@ -1,7 +1,5 @@
 package com.example.claireroop.donatiun_2340.Controller;
 
-//package edu.gatech.cs2340.csvfiledemo;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
