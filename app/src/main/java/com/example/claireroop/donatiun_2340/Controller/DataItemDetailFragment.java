@@ -1,6 +1,5 @@
 package com.example.claireroop.donatiun_2340.Controller;
 
-//package edu.gatech.cs2340.csvfiledemo;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.claireroop.donatiun_2340.R;
-
-//import edu.gatech.cs2340.csvfiledemo.dummy.DummyContent;
 
 /**
  * A fragment representing a single DataItem detail screen.
