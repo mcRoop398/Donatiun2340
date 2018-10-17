@@ -9,6 +9,7 @@ import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
 import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -38,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //Initialize the AccountTypeSpinner
-        _AccountTypeSpinner = (Spinner) findViewById(R.id.AccountTypeSpinner);
+        _AccountTypeSpinner = findViewById(R.id.AccountTypeSpinner);
 
         //set up adapted for spinner
         ArrayAdapter<Role> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, Role.values());
@@ -55,27 +56,29 @@ public class RegisterActivity extends AppCompatActivity {
         _list = Model.getListOfusers();
 
 
-
-
-        /** Expected: if(Text fields are not empty)
-         *               if(new user was not in the list of emails) then finish
-         *               else{set email error - email already used}
-         *
+        /** Checks Email
+         *  Checks Password
+         *  Checks Name
+         *  Create new user
+         *      - if user email is brand new => make user and go to resolution screen
+         *      - else if user email already exists (i.e. linked to an account) => Display Email Error
          */
-        if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
-            if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem())){
-                Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
-                startActivity(i);
-            }
-            else{
-                //Say user already created.
-                _email.setError("Email already has an account linked.");
-            }
+        if(!isEmailValid(_email.getText().toString())){
+            _email.setError("Email Invalid");
         }
-        else {
-            alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setMessage("Please fill out required fields");
-            alertDialog.show();
+        else if (!isPasswordValid(_password.getText().toString())) {
+            _password.setError(getString(R.string.error_invalid_password));
+        }
+        else if(_name.getText().toString().matches("")) {
+            _name.setError("Must Fill Out Name");
+        }
+        else if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem())){
+            Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
+            startActivity(i);
+        }
+        else{
+            //Say user already created.
+            _email.setError("Email already has an account linked.");
         }
     }
 
@@ -83,6 +86,16 @@ public class RegisterActivity extends AppCompatActivity {
         //Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
         //startActivity(i);
         finish();
+    }
+
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+        return email.contains("@");
+    }
+
+    private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
+        return password.length() > 4;
     }
 
 }
