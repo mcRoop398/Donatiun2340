@@ -1,6 +1,5 @@
 package com.example.claireroop.donatiun_2340.Controller;
 
-//package edu.gatech.cs2340.csvfiledemo;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.claireroop.donatiun_2340.R;
-
-//import edu.gatech.cs2340.csvfiledemo.dummy.DummyContent;
 
 /**
  * A fragment representing a single DataItem detail screen.
@@ -67,7 +64,7 @@ public class DataItemDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.dataitem_detail, container, false);
         Log.d("MYAPP", "Getting ready to set data");
         // Show the dummy content as text in a TextView.
-        if (mItem != null) {
+        if (mItem != null) { // mItem is a specific location
             Log.d("MYAPP", "Getting ready to set id");
             //((TextView) rootView.findViewById(R.id.id2)).setText("" + mItem.getId());
             ((TextView) rootView.findViewById(R.id.key)).setText("" + mItem.getKey());
@@ -88,5 +85,7 @@ public class DataItemDetailFragment extends Fragment {
 
         return rootView;
     }
+
+
 }
 

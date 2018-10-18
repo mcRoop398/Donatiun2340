@@ -1,7 +1,5 @@
 package com.example.claireroop.donatiun_2340.Controller;
 
-//package edu.gatech.cs2340.csvfiledemo;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +17,6 @@ import android.widget.TextView;
 
 
 import com.example.claireroop.donatiun_2340.R;
-
-//import edu.gatech.cs2340.csvfiledemo.dummy.DummyContent;
 
 import java.util.List;
 
