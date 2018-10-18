@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 public class ResolutionActivity extends AppCompatActivity {
 
     public static String TAG = "MY_APP";
+    private static boolean wasViewLocationClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,10 @@ public class ResolutionActivity extends AppCompatActivity {
 
     public void onClickLocationsButton(View view) {
         Log.v(ResolutionActivity.TAG, "Pressed the load button");
-        readSDFile();
+        if (!wasViewLocationClicked) {
+            wasViewLocationClicked = true;
+            readSDFile();
+        }
         Intent intent = new Intent(this, DataItemListActivity.class);
         startActivity(intent);
     }
