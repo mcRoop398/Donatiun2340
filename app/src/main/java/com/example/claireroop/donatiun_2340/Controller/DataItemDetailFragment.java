@@ -6,12 +6,31 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
+import com.example.claireroop.donatiun_2340.Model.DataItem;
+import com.example.claireroop.donatiun_2340.Model.DonationItem;
+import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
+
+import java.util.ArrayList;
+
+
+/**
+ *
+ * Class Use: Individual Location Screen **************************
+ *
+ * */
+
 
 /**
  * A fragment representing a single DataItem detail screen.
@@ -64,14 +83,33 @@ public class DataItemDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.dataitem_detail, container, false);
         Log.d("MYAPP", "Getting ready to set data");
         // Show the dummy content as text in a TextView.
-        if (mItem != null) { // mItem is a specific location
+
+        addNewDonation("Sean");
+        addNewDonation("John");
+        addNewDonation("Tommy");
+
+
+        if (mItem != null) {
+
+            String[] donationID = new String[mItem.getDonationItemsList().size()];
+            for(int i = 0; i < donationID.length; i++){
+                donationID[i] =  mItem.getDonationItemsList().get(i).getName();
+            }
+            Spinner donationSpinner = rootView.findViewById(R.id.Donations);
+            ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, donationID);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            donationSpinner.setAdapter(adapter);
+
+//            /**
+//             * This loop will put the array list in the spinner
+//             *      Maybe put in "onClick" - for spinner
+//             */
+
             Log.d("MYAPP", "Getting ready to set id");
             //((TextView) rootView.findViewById(R.id.id2)).setText("" + mItem.getId());
             ((TextView) rootView.findViewById(R.id.key)).setText("" + mItem.getKey());
             Log.d("MYAPP", "Getting ready to set name");
             ((TextView) rootView.findViewById(R.id.name)).setText(mItem.getName());
-//            ((TextView) rootView.findViewById(R.id.email)).setText(mItem.getEmail());
-//            ((TextView) rootView.findViewById(R.id.fruit)).setText(mItem.getFruit());
             ((TextView) rootView.findViewById(R.id.type)).setText("" + mItem.getType());
             ((TextView) rootView.findViewById(R.id.latitude)).setText("" + mItem.getLatitude());
             ((TextView) rootView.findViewById(R.id.longitude)).setText("" + mItem.getLongitude());
@@ -86,6 +124,14 @@ public class DataItemDetailFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Donation Object Constructor needs to variables to pass in
+     * Talk to John about what is need in Donation Object
+     *
+     */
+    public void addNewDonation(String name){
+        mItem.getDonationItemsList().add(new DonationItem(name));
+    }
 
 }
 
