@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DonationItem {
 
-    private String name;
+    private String ID;
     /*
     ITEM INFO
 
@@ -29,17 +29,16 @@ Donator's Phone #: String
 
 
 
-
-    public DonationItem(String name){
-        this.name = name;
+    public DonationItem(String ID){
+        this.ID = ID;
     }
 
-    public String getName() {
-        return name;
+    public String getID() {
+        return ID;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void getID(String name) {
+        this.ID = ID;
     }
 
 }
