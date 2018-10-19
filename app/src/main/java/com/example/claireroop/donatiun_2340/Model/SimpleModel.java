@@ -1,4 +1,4 @@
-package com.example.claireroop.donatiun_2340.Controller;
+package com.example.claireroop.donatiun_2340.Model;
 
 //package edu.gatech.cs2340.csvfiledemo;
 
@@ -39,4 +39,3 @@ public class SimpleModel {
         return null;
     }
 }
-
