@@ -1,4 +1,7 @@
 package com.example.claireroop.donatiun_2340.Controller;
+import com.example.claireroop.donatiun_2340.Model.DonationItems;
+
+import java.util.ArrayList;
 
 /**
  * Created by robertwaters on 9/18/17.
@@ -18,10 +21,11 @@ public class DataItem {
     public String type;
     public String phone;
     public String website;
+    public ArrayList<DonationItems> donationList;
 
     public DataItem(int key, String name, double latitude, double longitude,
                     String address, String city, String state, double zip, String type,
-                    String phone, String website) {
+                    String phone, String website, ArrayList<DonationItems> list) {
         this.key = key;
         this.name = name;
         this.latitude = latitude;
@@ -33,6 +37,13 @@ public class DataItem {
         this.type = type;
         this.phone = phone;
         this.website = website;
+        this.donationList = list;
+    }
+    public DataItem(int key, String name, double latitude, double longitude,
+                    String address, String city, String state, double zip, String type,
+                    String phone, String website) {
+        this(key, name, latitude, longitude, address, city, state, zip, type,
+                phone, website, new ArrayList<DonationItems>());
     }
 
     public String toString() {

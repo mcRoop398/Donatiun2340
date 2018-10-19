@@ -20,4 +20,5 @@
     <string name="title_location_detail">Location Detail</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_donation_item_info">Donation Item Info Activity</string>
 </resources>

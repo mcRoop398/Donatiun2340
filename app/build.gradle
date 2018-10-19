@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -32,10 +31,6 @@ dependencies {
 
     // below line causes build to fail, but is necessary for database setup???
     //implementation 'com.google.firebase:firebase-database:16.0.1:15.0.0'
-    implementation 'com.google.firebase:firebase-core:16.0.1'
 
     // FirebaseUI for Firebase Realtime Database
-    implementation 'com.firebaseui:firebase-ui-database:4.2.0'
 }
-
-apply plugin: 'com.google.gms.google-services'
