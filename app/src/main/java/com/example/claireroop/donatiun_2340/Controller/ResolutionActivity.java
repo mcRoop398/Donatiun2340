@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.example.claireroop.donatiun_2340.Model.DataItem;
+import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
 
 import java.io.BufferedReader;
