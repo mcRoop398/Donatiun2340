@@ -47,6 +47,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.claireroop.donatiun_2340.Controller.DataItemListActivity" />
         </activity>
+        <activity
+            android:name=".Controller.DonationItemInfoActivity"
+            android:label="@string/title_activity_donation_item_info"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
