@@ -88,10 +88,6 @@ public class DataItemDetailFragment extends Fragment {
         if (mItem != null) {
             Spinner donationSpinner;
 
-            addNewDonation("Sean");
-            addNewDonation("John");
-            addNewDonation("Tommy");
-
             final String[] donationID = new String[mItem.getDonationItemsList().size()];
             for(int i = 0; i < donationID.length; i++){
                 donationID[i] =  mItem.getDonationItemsList().get(i).getID();
