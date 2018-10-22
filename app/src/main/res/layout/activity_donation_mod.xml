@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/ItemName"
+        android:id="@+id/edit1"
         android:layout_width="122dp"
         android:layout_height="46dp"
         android:layout_marginEnd="128dp"
@@ -97,7 +97,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
         android:text="Donator's name:"
-        app:layout_constraintEnd_toStartOf="@+id/ItemName"
+        app:layout_constraintEnd_toStartOf="@+id/edit1"
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/value_textview" />

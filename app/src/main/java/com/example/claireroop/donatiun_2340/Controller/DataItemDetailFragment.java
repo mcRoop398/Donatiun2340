@@ -50,6 +50,10 @@ public class DataItemDetailFragment extends Fragment {
      */
     private DataItem mItem;
 
+    public DataItem getmItem() {
+        return mItem;
+    }
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -93,7 +97,7 @@ public class DataItemDetailFragment extends Fragment {
 
             String[] donationID = new String[mItem.getDonationItemsList().size()];
             for(int i = 0; i < donationID.length; i++){
-                donationID[i] =  mItem.getDonationItemsList().get(i).getName();
+                donationID[i] =  mItem.getDonationItemsList().get(i).name;
             }
             Spinner donationSpinner = rootView.findViewById(R.id.Donations);
             ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, donationID);
@@ -130,7 +134,9 @@ public class DataItemDetailFragment extends Fragment {
      *
      */
     public void addNewDonation(String name){
-        mItem.getDonationItemsList().add(new DonationItem(name));
+        mItem.getDonationItemsList().add(new DonationItem(name,
+                "","","","",
+                "","",mItem.getDonationItemsList()));
     }
 
 }
