@@ -38,4 +38,17 @@ public class SimpleModel {
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
     }
+
+    private int _currentDonationItemIndex;
+
+    public int getCurrentDonationItemIndex() {
+        return _currentDonationItemIndex;
+    }
+
+    private int _currentDataItemIndex;
+
+    public int getCurrentDataItemIndex() {
+        return _currentDataItemIndex;
+    }
+
 }

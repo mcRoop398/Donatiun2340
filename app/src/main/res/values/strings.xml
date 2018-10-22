@@ -21,8 +21,4 @@
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_donation_item_info">Donation Item Info Activity</string>
-    <string name="new_donation">New Donation</string>
-    <string name="edit_donation">Edit Donation</string>
-    <string name="location_information">Location Information</string>
-    <string name="name">Name</string>
 </resources>

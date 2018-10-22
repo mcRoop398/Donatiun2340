@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DonationItem {
 
-    private String ID;
+    public String name;
     /*
     ITEM INFO
 
@@ -25,20 +25,30 @@ Donator's name: String
 Donator's Phone #: String
 */
 
-
-
-
-
-    public DonationItem(String ID){
-        this.ID = ID;
+    public DonationItem(String cat, String n, String col, String con,
+                        String val, String donatName, String donatPhone,
+                        ArrayList<DonationItem> list) {
+        this.category = cat;
+        this.name = n;
+        this.color = col;
+        this.condition = con;
+        this.value = val;
+        this.donatorName = donatName;
+        this.donatorPhoneNumber = donatPhone;
+        this.listContainedIn = list;
+        this.isInList = false;
     }
 
-    public String getID() {
-        return ID;
-    }
+    public String category;
+    public String color;
+    public String condition;
+    public String value;
+    public String donatorName;
+    public String donatorPhoneNumber;
+    public ArrayList<DonationItem> listContainedIn;
+    public boolean isInList;
 
-    public void getID(String name) {
-        this.ID = ID;
+    public void addedFlag() {
+        this.isInList = true;
     }
-
 }
