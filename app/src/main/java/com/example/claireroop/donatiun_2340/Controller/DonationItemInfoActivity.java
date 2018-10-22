@@ -24,6 +24,9 @@ public class DonationItemInfoActivity extends AppCompatActivity {
     EditText color;
     EditText condition;
     EditText value;
+    EditText itemName;
+    EditText donor;
+    EditText phoneNumber;
 
     static boolean newDonation = false;
 
@@ -43,7 +46,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
          * Creating new donation item - to end of the list
          */
         if(newDonation == true) {
-            DonationItem newDonation = new DonationItem("", "",
+            DonationItem newDonation = new DonationItem("", "", "",
                     "", "", "",
                     "", "",
                     model.getItems().get(dataItemIndex).getDonationItemsList());
@@ -60,17 +63,24 @@ public class DonationItemInfoActivity extends AppCompatActivity {
             item = model.getItems().get(dataItemIndex).getDonationItemsList().get(donationItemIndex);
         }
 
-        ID = (EditText) findViewById(R.id.DonationID);
-        category = (EditText) findViewById(R.id.Category);
-        color = (EditText) findViewById(R.id.Color);
-        condition = (EditText) findViewById(R.id.Condition);
-        value = (EditText) findViewById(R.id.Value);
+        ID = findViewById(R.id.DonationID);
+        category = findViewById(R.id.Category);
+        color = findViewById(R.id.Color);
+        condition = findViewById(R.id.Condition);
+        value = findViewById(R.id.Value);
+        itemName = findViewById(R.id.ItemName);
+        donor = findViewById(R.id.Donor);
+        phoneNumber = findViewById(R.id.Phone_Number);
+
 
         ID.setText(item.ID);
         category.setText(item.category);
         color.setText(item.color);
         condition.setText(item.condition);
         value.setText(item.value);
+        itemName.setText(item.itemName);
+        donor.setText(item.donatorName);
+        phoneNumber.setText(item.donatorPhoneNumber);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -84,7 +94,9 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 item.color = color.getText().toString();
                 item.condition = condition.getText().toString();
                 item.value = value.getText().toString();
-
+                item.itemName = itemName.getText().toString();
+                item.donatorName = donor.getText().toString();
+                item.donatorPhoneNumber = phoneNumber.getText().toString();
                 finish();
             }
         });

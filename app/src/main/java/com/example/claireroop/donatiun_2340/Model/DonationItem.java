@@ -23,9 +23,10 @@ Donator's name: String
 Donator's Phone #: String
 */
 
-    public DonationItem(String cat, String ID, String col, String con,
+    public DonationItem(String itemName, String cat, String ID, String col, String con,
                         String val, String donatName, String donatPhone,
                         ArrayList<DonationItem> list) {
+        this.itemName = itemName;
         this.category = cat;
         this.ID = ID;
         this.color = col;
@@ -37,6 +38,7 @@ Donator's Phone #: String
         this.isInList = false;
     }
 
+    public String itemName;
     public String ID;
     public String category;
     public String color;

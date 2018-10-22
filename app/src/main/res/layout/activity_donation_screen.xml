@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Category" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/Phone_Number"
         android:layout_width="181dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
