@@ -9,6 +9,8 @@ import java.util.List;
 /**
  * Created by robertwaters on 9/18/17.
  * Edited by Darby Foster on 10/12/18.
+ *
+ * DataItem: each individual location
  */
 
 

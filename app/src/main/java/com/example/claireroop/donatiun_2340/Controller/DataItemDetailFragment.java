@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -50,10 +51,6 @@ public class DataItemDetailFragment extends Fragment {
      */
     private DataItem mItem;
 
-    public DataItem getmItem() {
-        return mItem;
-    }
-
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -84,25 +81,44 @@ public class DataItemDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.dataitem_detail, container, false);
+        final View rootView = inflater.inflate(R.layout.dataitem_detail, container, false);
         Log.d("MYAPP", "Getting ready to set data");
         // Show the dummy content as text in a TextView.
 
-        addNewDonation("Sean");
-        addNewDonation("John");
-        addNewDonation("Tommy");
-
-
         if (mItem != null) {
+            Spinner donationSpinner;
 
-            String[] donationID = new String[mItem.getDonationItemsList().size()];
+            addNewDonation("Sean");
+            addNewDonation("John");
+            addNewDonation("Tommy");
+
+            final String[] donationID = new String[mItem.getDonationItemsList().size()];
             for(int i = 0; i < donationID.length; i++){
-                donationID[i] =  mItem.getDonationItemsList().get(i).name;
+                donationID[i] =  mItem.getDonationItemsList().get(i).getID();
             }
-            Spinner donationSpinner = rootView.findViewById(R.id.Donations);
+            donationSpinner = rootView.findViewById(R.id.Donations);
             ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, donationID);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             donationSpinner.setAdapter(adapter);
+
+            final Button newDonation = rootView.findViewById(R.id.New_Donation);
+            final Button editDonation = rootView.findViewById(R.id.Edit_Donation);
+
+            newDonation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // addNewDonation screen
+                    // put it in array list and let it update spinner
+                }
+            });
+            editDonation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // check selected spinner donation
+                    // send it all to editDonation screen
+                }
+            });
+
 
 //            /**
 //             * This loop will put the array list in the spinner
@@ -128,15 +144,8 @@ public class DataItemDetailFragment extends Fragment {
         return rootView;
     }
 
-    /**
-     * Donation Object Constructor needs to variables to pass in
-     * Talk to John about what is need in Donation Object
-     *
-     */
     public void addNewDonation(String name){
-        mItem.getDonationItemsList().add(new DonationItem(name,
-                "","","","",
-                "","",mItem.getDonationItemsList()));
+        mItem.getDonationItemsList().add(new DonationItem(name));
     }
 
 }
