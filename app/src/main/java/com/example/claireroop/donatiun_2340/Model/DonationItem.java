@@ -3,8 +3,6 @@ package com.example.claireroop.donatiun_2340.Model;
 import java.util.ArrayList;
 
 public class DonationItem {
-
-    public String name;
     /*
     ITEM INFO
 
@@ -25,11 +23,11 @@ Donator's name: String
 Donator's Phone #: String
 */
 
-    public DonationItem(String cat, String n, String col, String con,
+    public DonationItem(String cat, String ID, String col, String con,
                         String val, String donatName, String donatPhone,
                         ArrayList<DonationItem> list) {
         this.category = cat;
-        this.name = n;
+        this.ID = ID;
         this.color = col;
         this.condition = con;
         this.value = val;
@@ -39,6 +37,7 @@ Donator's Phone #: String
         this.isInList = false;
     }
 
+    public String ID;
     public String category;
     public String color;
     public String condition;

@@ -9,14 +9,69 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.EditText;
 
+import com.example.claireroop.donatiun_2340.Model.DonationItem;
+import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
 
+import java.util.ArrayList;
+
 public class DonationItemInfoActivity extends AppCompatActivity {
+
+    EditText ID;
+    EditText category;
+    EditText color;
+    EditText condition;
+    EditText value;
+
+    static boolean newDonation = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.donation_item_info_activity);
+        setContentView(R.layout.activity_donation_screen);
+
+        final SimpleModel model = SimpleModel.INSTANCE;
+        final int dataItemIndex = getIntent().getIntExtra("dataItemIndex", 0);
+        final ArrayList<DonationItem> donationItemList= model.getItems().get(dataItemIndex).getDonationItemsList();
+        final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size()-1);
+        final DonationItem item;
+
+
+        /**
+         * Creating new donation item - to end of the list
+         */
+        if(newDonation == true) {
+            DonationItem newDonation = new DonationItem("", "",
+                    "", "", "",
+                    "", "",
+                    model.getItems().get(dataItemIndex).getDonationItemsList());
+            //add new donation to list
+            donationItemList.add(donationItemList.size(), newDonation);
+            //item is the newDonation
+            item = newDonation;
+        }
+        /**
+         * Editing current donation item
+         * Based on previous screen the list can not be empty when trying to edit
+         */
+        else {
+            item = model.getItems().get(dataItemIndex).getDonationItemsList().get(donationItemIndex);
+        }
+
+        ID = (EditText) findViewById(R.id.DonationID);
+        category = (EditText) findViewById(R.id.Category);
+        color = (EditText) findViewById(R.id.Color);
+        condition = (EditText) findViewById(R.id.Condition);
+        value = (EditText) findViewById(R.id.Value);
+
+        ID.setText(item.ID);
+        category.setText(item.category);
+        color.setText(item.color);
+        condition.setText(item.condition);
+        value.setText(item.value);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -24,15 +79,22 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                item.ID = ID.getText().toString();
+                item.category = category.getText().toString();
+                item.color = color.getText().toString();
+                item.condition = condition.getText().toString();
+                item.value = value.getText().toString();
 
+                finish();
             }
         });
 
-        Button del = (Button) findViewById(R.id.save_button);
+        Button del = (Button) findViewById(R.id.delete_button);
         del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                donationItemList.remove(item);
+                finish();
             }
         });
     }
