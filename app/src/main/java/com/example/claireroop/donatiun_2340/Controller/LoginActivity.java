@@ -40,6 +40,7 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import com.example.claireroop.donatiun_2340.Model.AccountList;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A login screen that offers login via email/password.
@@ -76,6 +77,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
 
+
     /*
     Button btn = (Button)findViewById(R.id.open_activity_button);
 
@@ -95,6 +97,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
+
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
@@ -128,6 +131,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
     }
 
     private void populateAutoComplete() {
