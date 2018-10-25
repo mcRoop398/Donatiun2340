@@ -5,7 +5,7 @@ package com.example.claireroop.donatiun_2340.Model;
  */
 
 @SuppressWarnings("ALL")
-public class Model {
+public class Model extends FirebaseDAO{
     private static Model instance = new Model();
     private static AccountList listOfusers;
 

@@ -1,5 +1,7 @@
 package com.example.claireroop.donatiun_2340.Model;
 
+import java.io.Serializable;
+
 public class Account {
 
     private String _email;
@@ -8,9 +10,9 @@ public class Account {
     private Role _role;
     private String _id;
 
-//    private Account() {
-//
-//    }
+    private Account() {
+
+    }
 
     public Account(String email, String password, String name, Role role, String id) {
         _email = email;
