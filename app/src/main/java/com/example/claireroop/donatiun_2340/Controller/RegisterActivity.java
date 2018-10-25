@@ -27,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText _name;
     private EditText _email;
     private EditText _password;
+    private EditText _id;
     private AccountList _list;
     private AlertDialog.Builder alertDialog;
     private Spinner _AccountTypeSpinner;
@@ -63,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
          *
          */
         if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
-            if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem())){
+            if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem(), _id.getText().toString())){
                 Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
                 startActivity(i);
             }
