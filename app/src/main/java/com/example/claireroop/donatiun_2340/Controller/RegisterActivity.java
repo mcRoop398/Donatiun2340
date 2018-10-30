@@ -66,11 +66,22 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        /** Expected: if(Text fields are not empty)
-         *               if(new user was not in the list of emails) then finish
-         *               else{set email error - email already used}
-         *
+        /** Checks Email
+         *  Checks Password
+         *  Checks Name
+         *  Create new user
+         *      - if user email is brand new => make user and go to resolution screen
+         *      - else if user email already exists (i.e. linked to an account) => Display Email Error
          */
+        if(!isEmailValid(_email.getText().toString())){
+            _email.setError("Email Invalid");
+        }
+        else if (!isPasswordValid(_password.getText().toString())) {
+            _password.setError(getString(R.string.error_invalid_password));
+        }
+        else if(_name.getText().toString().matches("")) {
+            _name.setError("Must Fill Out Name");
+        }
         if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
             if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem(), _id.getText().toString())){
                  _personRef = _accountRef.child(_name.getText().toString());
@@ -100,6 +111,16 @@ public class RegisterActivity extends AppCompatActivity {
         //Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
         //startActivity(i);
         finish();
+    }
+
+    private boolean isEmailValid(String email) {
+        //TODO: Replace this with your own logic
+        return email.contains("@");
+    }
+
+    private boolean isPasswordValid(String password) {
+        //TODO: Replace this with your own logic
+        return password.length() > 4;
     }
 
 }
