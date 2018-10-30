@@ -21,6 +21,10 @@ import com.example.claireroop.donatiun_2340.Model.AccountList;
 import com.example.claireroop.donatiun_2340.Model.Role;
 import com.example.claireroop.donatiun_2340.Model.Model;
 import com.example.claireroop.donatiun_2340.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -31,6 +35,10 @@ public class RegisterActivity extends AppCompatActivity {
     private AccountList _list;
     private AlertDialog.Builder alertDialog;
     private Spinner _AccountTypeSpinner;
+
+    DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference _accountRef = _dbRef.child("accounts");
+    DatabaseReference _personRef;
 
 
     @Override
@@ -73,6 +81,13 @@ public class RegisterActivity extends AppCompatActivity {
             _name.setError("Must Fill Out Name");
         }
         else if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem())){
+            HashMap<String, Object> update = new HashMap<>();
+            _personRef = _accountRef.child(_name.getText().toString());
+            update.put("name", _name.getText().toString());
+            update.put("email", _email.getText().toString());
+            update.put("password", _password.getText().toString());
+            update.put("role", _AccountTypeSpinner.getSelectedItem());
+            _personRef.updateChildren(update);
             Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
             startActivity(i);
         }
