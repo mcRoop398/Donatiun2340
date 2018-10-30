@@ -20,6 +20,11 @@ import com.example.claireroop.donatiun_2340.Model.AccountList;
 import com.example.claireroop.donatiun_2340.Model.Role;
 import com.example.claireroop.donatiun_2340.Model.Model;
 import com.example.claireroop.donatiun_2340.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,6 +37,9 @@ public class RegisterActivity extends AppCompatActivity {
     private AlertDialog.Builder alertDialog;
     private Spinner _AccountTypeSpinner;
 
+    DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference _accountRef = _dbRef.child("account");
+    DatabaseReference _personRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +73,14 @@ public class RegisterActivity extends AppCompatActivity {
          */
         if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
             if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem(), _id.getText().toString())){
+                 _personRef = _accountRef.child(_name.getText().toString());
+                HashMap<String, Object> update = new HashMap<>();
+                update.put("name", _name.getText().toString());
+                update.put ("id", _id.getText().toString());
+                update.put("email", _email.getText().toString());
+                update.put("password", _password.getText().toString());
+                update.put("role", _AccountTypeSpinner.getSelectedItem());
+                _personRef.updateChildren(update);
                 Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
                 startActivity(i);
             }
