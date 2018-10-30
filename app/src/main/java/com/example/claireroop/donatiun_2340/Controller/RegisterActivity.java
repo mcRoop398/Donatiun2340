@@ -84,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         if(!(_name.getText().toString().matches("")) && !(_email.getText().toString().matches("")) && !(_password.getText().toString().matches(""))){
             if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem(), _id.getText().toString())){
+
                  _personRef = _accountRef.child(_name.getText().toString());
                 HashMap<String, Object> update = new HashMap<>();
                 update.put("name", _name.getText().toString());

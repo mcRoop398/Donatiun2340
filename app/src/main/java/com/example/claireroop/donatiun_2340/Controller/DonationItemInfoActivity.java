@@ -14,8 +14,11 @@ import android.widget.EditText;
 import com.example.claireroop.donatiun_2340.Model.DonationItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DonationItemInfoActivity extends AppCompatActivity {
 
@@ -29,6 +32,10 @@ public class DonationItemInfoActivity extends AppCompatActivity {
     EditText phoneNumber;
 
     static boolean newDonation = false;
+
+    DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference _locationRef = _dbRef.child("location");
+    DatabaseReference _donationRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,15 @@ public class DonationItemInfoActivity extends AppCompatActivity {
             donationItemList.add(donationItemList.size(), newDonation);
             //item is the newDonation
             item = newDonation;
+
+//            _donationRef = _locationRef.child(_name.getText().toString());
+//            HashMap<String, Object> update = new HashMap<>();
+//            update.put("name", _name.getText().toString());
+//            update.put ("id", _id.getText().toString());
+//            update.put("email", _email.getText().toString());
+//            update.put("password", _password.getText().toString());
+//            update.put("role", _AccountTypeSpinner.getSelectedItem());
+//            _donationRef.updateChildren(update);
         }
         /**
          * Editing current donation item
