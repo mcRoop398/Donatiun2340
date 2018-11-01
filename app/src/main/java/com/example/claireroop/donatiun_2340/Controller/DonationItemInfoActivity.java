@@ -14,8 +14,12 @@ import android.widget.EditText;
 import com.example.claireroop.donatiun_2340.Model.DonationItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class DonationItemInfoActivity extends AppCompatActivity {
 
@@ -40,6 +44,10 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         final ArrayList<DonationItem> donationItemList= model.getItems().get(dataItemIndex).getDonationItemsList();
         final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size()-1);
         final DonationItem item;
+
+        final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference _donationRef = _dbRef.child("locations");
+        final List<Object> itemList = new ArrayList<>();
 
 
         /**
@@ -73,6 +81,9 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         phoneNumber = findViewById(R.id.Phone_Number);
 
 
+
+
+
         ID.setText(item.ID);
         category.setText(item.category);
         color.setText(item.color);
@@ -97,6 +108,20 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 item.itemName = itemName.getText().toString();
                 item.donatorName = donor.getText().toString();
                 item.donatorPhoneNumber = phoneNumber.getText().toString();
+
+
+                HashMap<String, Object> update = new HashMap<>();
+                //List<Object> itemList = new ArrayList<>();
+                DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
+                itemList.add(donation);
+                //ref.child(location.firebaseid).setValue(location)
+                DatabaseReference itemref = _donationRef.child("donations");
+                itemref.setValue(itemList);
+                //update.put("name", itemName.getText().toString());
+//        update.put("email", _email.getText().toString());
+//        update.put("password", _password.getText().toString());
+//        update.put("role", _AccountTypeSpinner.getSelectedItem());
+                //itemref.updateChildren(update);
                 finish();
             }
         });

@@ -38,6 +38,18 @@ Donator's Phone #: String
         this.isInList = false;
     }
 
+    public DonationItem(String itemName, String cat, String ID, String col, String con,
+                        String val, String donatName, String donatPhone) {
+        this.itemName = itemName;
+        this.category = cat;
+        this.ID = ID;
+        this.color = col;
+        this.condition = con;
+        this.value = val;
+        this.donatorName = donatName;
+        this.donatorPhoneNumber = donatPhone;
+    }
+
     public String itemName;
     public String ID;
     public String category;

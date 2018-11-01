@@ -40,6 +40,14 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import com.example.claireroop.donatiun_2340.Model.AccountList;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+
 
 /**
  * A login screen that offers login via email/password.
@@ -191,6 +199,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+
+
 
 
 
@@ -348,10 +358,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private final String mEmail;
         private final String mPassword;
 
+        DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference _accountRef = _dbRef.child("accounts");
+        DatabaseReference _personRef;
+
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
         }
+
+//        _personRef.addValueEventListener(new ValueEventListener() {
+//            public void onDataChange(DataSnapshot dataSnapshot){
+//                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                    String s = (String) snap.child(mEmail).getValue();
+//                }
+//            }
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//        }
+//        });
 
         @Override
         protected Boolean doInBackground(Void... params) {

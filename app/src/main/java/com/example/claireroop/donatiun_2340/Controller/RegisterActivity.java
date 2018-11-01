@@ -23,6 +23,7 @@ import com.example.claireroop.donatiun_2340.Model.Model;
 import com.example.claireroop.donatiun_2340.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.claireroop.donatiun_2340.Model.Account;
 
 import java.util.HashMap;
 
@@ -32,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText _name;
     private EditText _email;
     private EditText _password;
+    private Role _role;
     private AccountList _list;
     private AlertDialog.Builder alertDialog;
     private Spinner _AccountTypeSpinner;
@@ -62,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
         _email = findViewById(R.id.email);
         _password = findViewById(R.id.password);
         _list = Model.getListOfusers();
+        _role = (Role) _AccountTypeSpinner.getSelectedItem();
 
 
         /** Checks Email
@@ -82,12 +85,15 @@ public class RegisterActivity extends AppCompatActivity {
         }
         else if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem())){
             HashMap<String, Object> update = new HashMap<>();
-            _personRef = _accountRef.child(_name.getText().toString());
-            update.put("name", _name.getText().toString());
-            update.put("email", _email.getText().toString());
-            update.put("password", _password.getText().toString());
-            update.put("role", _AccountTypeSpinner.getSelectedItem());
-            _personRef.updateChildren(update);
+
+            Account newPerson = new Account(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), _role);
+            _personRef = _accountRef.child(newPerson.get_email().substring(0,newPerson.get_email().indexOf("@")));
+            _personRef.setValue(newPerson);
+//            update.put("name", _name.getText().toString());
+//            update.put("email", _email.getText().toString());
+//            update.put("password", _password.getText().toString());
+//            update.put("role", _AccountTypeSpinner.getSelectedItem());
+            //_personRef.updateChildren(update);
             Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
             startActivity(i);
         }
