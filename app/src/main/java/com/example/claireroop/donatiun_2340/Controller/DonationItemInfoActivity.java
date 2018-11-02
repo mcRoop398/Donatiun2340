@@ -48,6 +48,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
         final DatabaseReference _donationRef = _dbRef.child("locations");
         final List<Object> itemList = new ArrayList<>();
+        //final DonationItem donation;
 
 
         /**
@@ -109,22 +110,20 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 item.donatorName = donor.getText().toString();
                 item.donatorPhoneNumber = phoneNumber.getText().toString();
 
-
-                HashMap<String, Object> update = new HashMap<>();
-                //List<Object> itemList = new ArrayList<>();
+                //pull in list then update it
                 DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
                 itemList.add(donation);
-                //ref.child(location.firebaseid).setValue(location)
                 DatabaseReference itemref = _donationRef.child("donations");
                 itemref.setValue(itemList);
-                //update.put("name", itemName.getText().toString());
-//        update.put("email", _email.getText().toString());
-//        update.put("password", _password.getText().toString());
-//        update.put("role", _AccountTypeSpinner.getSelectedItem());
-                //itemref.updateChildren(update);
                 finish();
             }
         });
+
+//        DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
+//        itemList.add(donation);
+//        DatabaseReference itemref = _donationRef.child("donations");
+//        itemref.setValue(itemList);
+//        finish();
 
         Button del = (Button) findViewById(R.id.delete_button);
         del.setOnClickListener(new View.OnClickListener() {
