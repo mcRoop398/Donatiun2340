@@ -13,10 +13,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
 import com.example.claireroop.donatiun_2340.Model.DataItem;
+import com.example.claireroop.donatiun_2340.Model.DonationItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
 
@@ -48,6 +52,7 @@ public class DataItemListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
