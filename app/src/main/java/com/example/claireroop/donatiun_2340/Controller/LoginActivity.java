@@ -127,7 +127,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 finish();
             }
         });
-
     }
 
     private void populateAutoComplete() {
@@ -191,8 +190,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-
-
 
         boolean cancel = false;
         View focusView = null;

@@ -174,7 +174,6 @@ public class DataItemDetailFragment extends Fragment {
         donationSpinner.setAdapter(adapter);
         donationSpinner.setAdapter(adapter);
 
-
     }
 
 
