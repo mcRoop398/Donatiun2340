@@ -80,8 +80,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private AccountList mAccountList;
 
-
-
+    //String enteredEmail;
 
 
 
@@ -353,23 +352,55 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static void retrievePeople(String email, String password) {
         DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference _accountRef = _dbRef.child("accounts");
-        email = email.substring(0, email.indexOf("@"));
-        DatabaseReference _personRef = _accountRef.child(email);
+        final String enteredEm = email.substring(0, email.indexOf("@"));
+        final String databasePass = password;
+        //String enteredEmail;
+        //email = email.substring(0, email.indexOf("@"));
+        DatabaseReference _personRef = _accountRef.child(enteredEm);
         _personRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                    String s = (String) dataSnapshot.child("_name").getValue();
-                    Log.e("YEEEEEEE", s);
+                    String databaseEm = (String) dataSnapshot.child("_name").getValue();
+                    //databaseEm = databaseEm.substring(0, databaseEm.indexOf("@"));
+                //String databaseEm = (String) dataSnapshot.child("_email").getValue();
+                    Log.e("litttttt", databaseEm);
+                    //checkPassword(enteredEm, databaseEm, databasePass);
+                    Log.e("litty", databaseEm);
+                   // enteredEmail = s;
                 //}
+            }
+
+            public boolean checkPassword(String email, String enteredEmail, String password) {
+                if (enteredEmail.equals(email)) {
+//                    Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
+//                    startActivity(i);
+                    return true;
+                }
+                else {
+//                    mPasswordView.setError(getString(R.string.error_incorrect_password));
+//                    mPasswordView.requestFocus();
+                    return false;
+                }
+                //return false;
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
+
+//             if (email.equals(s)) {
+//
+//            }
         });
+        //return true;
     }
+
+//    private boolean checkPassword(String s) {
+//        return false;
+//    }
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
