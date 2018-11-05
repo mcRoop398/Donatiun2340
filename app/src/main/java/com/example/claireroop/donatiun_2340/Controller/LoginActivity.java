@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,6 +41,14 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import com.example.claireroop.donatiun_2340.Model.AccountList;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+
+
 
 /**
  * A login screen that offers login via email/password.
@@ -127,6 +136,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 finish();
             }
         });
+
     }
 
     private void populateAutoComplete() {
@@ -190,6 +200,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+
+
+
+
 
         boolean cancel = false;
         View focusView = null;
@@ -336,6 +350,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
+    public static void retrievePeople(String email, String password) {
+        DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference _accountRef = _dbRef.child("accounts");
+        email = email.substring(0, email.indexOf("@"));
+        DatabaseReference _personRef = _accountRef.child(email);
+        _personRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                    String s = (String) dataSnapshot.child("_name").getValue();
+                    Log.e("YEEEEEEE", s);
+                //}
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -345,14 +380,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private final String mEmail;
         private final String mPassword;
 
+        DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference _accountRef = _dbRef.child("accounts");
+        DatabaseReference _personRef;
+
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
         }
 
+
         @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
+
+            retrievePeople(mEmail, mPassword);
 
             try {
                 // Simulate network access.

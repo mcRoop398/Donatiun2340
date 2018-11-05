@@ -1,17 +1,25 @@
 package com.example.claireroop.donatiun_2340.Model;
 
+import java.io.Serializable;
+
 public class Account {
 
     private String _email;
     private String _name;
     private String _password;
     private Role _role;
+    private String _id;
+
+    private Account() {
+
+    }
 
     public Account(String email, String password, String name, Role role) {
         _email = email;
         _password = password;
         _name = name;
         _role = role;
+       // _id = id;
     }
 
     //utilities
@@ -44,6 +52,7 @@ public class Account {
     public String get_email() {
         return _email;
     }
+    public String get_id() { return _id;}
 
     //setters:
     public void set_password(String p) {
@@ -58,5 +67,6 @@ public class Account {
     public void set_email(String e) {
         _email = e;
     }
+    public void set_id(String id) { _id = id;}
 
 }

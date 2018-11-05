@@ -9,17 +9,24 @@ import android.view.View;
 import com.example.claireroop.donatiun_2340.Model.DataItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 public class ResolutionActivity extends AppCompatActivity {
 
     public static String TAG = "MY_APP";
     private static boolean wasViewLocationClicked = false;
+
+    DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference _accountRef = _dbRef.child("locations");
+    DatabaseReference _personRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +94,19 @@ public class ResolutionActivity extends AppCompatActivity {
                 int zip = Integer.parseInt(tokens[7]);
                 model.addItem(new DataItem(key, tokens[1], latitude, longitude, tokens[4], tokens[5],
                         tokens[6], zip, tokens[8], tokens[9], tokens[10]));
+
+                HashMap<String, Object> update = new HashMap<>();
+               DataItem newLocation = new DataItem(key,tokens[1], latitude, longitude, tokens[4], tokens[5], tokens[6], zip, tokens[8], tokens[9], tokens[10]);
+                _personRef = _accountRef.child(newLocation.getName().substring(4 ,6));
+                _personRef.setValue(newLocation);
+                //_personRef = _accountRef.push();
+//                update.put("firebaseid", _personRef.getKey());
+//                update.put("name", tokens[1]);
+//                update.put("key", key);
+//                update.put("latitude",latitude);
+//                update.put("longitude", longitude);
+//                update.put("zip", zip);
+//                _personRef.updateChildren(update);
             }
             br.close();
         } catch (IOException e) {
