@@ -56,6 +56,8 @@ public class DataItemDetailFragment extends Fragment {
 
     private Spinner donationSpinner;
 
+    //private Button map;
+
     private View rootView;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -82,6 +84,10 @@ public class DataItemDetailFragment extends Fragment {
                 appBarLayout.setTitle(mItem.getName());
             }
         }
+
+        //ID = findViewById(R.id.btViewMap);
+
+
     }
 
     @Override
@@ -157,6 +163,8 @@ public class DataItemDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.website)).setText("" + mItem.getWebsite());
         }
 
+
+
         return rootView;
     }
 
@@ -175,6 +183,16 @@ public class DataItemDetailFragment extends Fragment {
         donationSpinner.setAdapter(adapter);
 
     }
+
+
+
+
+
+
+
+//        Intent mapView = new Intent(getContext(), MapsActivity.class);
+//        startActivity(mapView);
+
 
 
 }

@@ -119,6 +119,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
             }
         });
 
+
 //        DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
 //        itemList.add(donation);
 //        DatabaseReference itemref = _donationRef.child("donations");
@@ -133,6 +134,12 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void onClickMap(View view) {
+        setContentView(R.layout.activity_maps);
+        Intent mapView = new Intent(view.getContext(), MapsActivity.class);
+        startActivity(mapView);
     }
 
 }
