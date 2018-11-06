@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.claireroop.donatiun_2340.Model.DataItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
@@ -33,6 +34,16 @@ public class ResolutionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resolution);
 
+        Button map = (Button) findViewById(R.id.btViewMap);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mapView = new Intent(view.getContext(), MapsActivity.class);
+                startActivity(mapView);
+
+                //finish();
+            }
+        });
     }
 
     public void onClickCancelButton(View v) {

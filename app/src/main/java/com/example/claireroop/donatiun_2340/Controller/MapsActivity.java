@@ -10,7 +10,12 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -40,9 +45,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney").snippet("Here is a snippet"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker at Location01 and move the camera
+        LatLng location01 = new LatLng(33.75416, -84.37742);
+        mMap.addMarker(new MarkerOptions().position(location01).title("AFD Station 4").snippet("404-555-3456"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location01));
+
+        // Add a marker at Location02 and move the camera
+        LatLng location02 = new LatLng(33.73182, -84.43971);
+        mMap.addMarker(new MarkerOptions().position(location02).title("Boys & Girls Club W.W. Woolfolk").snippet("404-555-1234"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location02));
+
+        // Add a marker at Location03 and move the camera
+        LatLng location03 = new LatLng(33.70866, -84.41853);
+        mMap.addMarker(new MarkerOptions().position(location03).title("Pathway Upper Room Christian Ministries").snippet("404-555-5432"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location03));
+
+        // Add a marker at Location04 and move the camera
+        LatLng location04 = new LatLng(33.80129, -84.25537);
+        mMap.addMarker(new MarkerOptions().position(location04).title("Pavilion of Hope, Inc.").snippet("404-555-8765"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location04));
+
+        // Add a marker at Location05 and move the camera
+        LatLng location05 = new LatLng(33.71747, -84.25210);
+        mMap.addMarker(new MarkerOptions().position(location05).title("D&D Convenience Store").snippet("404-555-9876"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location01));
+
+        // Add a marker at Location06 and move the camera
+        LatLng location06 = new LatLng(33.96921, -84.36880);
+        mMap.addMarker(new MarkerOptions().position(location06).title("Keep North Fulton Beautiful").snippet("770-555-7321"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location06));
     }
 }

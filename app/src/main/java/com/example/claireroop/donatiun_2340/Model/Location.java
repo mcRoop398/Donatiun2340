@@ -62,6 +62,4 @@ public class Location implements Comparable<Location> {
             }
         }
     }
-
-
 }

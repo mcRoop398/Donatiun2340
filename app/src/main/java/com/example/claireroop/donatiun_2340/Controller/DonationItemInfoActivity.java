@@ -134,8 +134,5 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
-
 }
