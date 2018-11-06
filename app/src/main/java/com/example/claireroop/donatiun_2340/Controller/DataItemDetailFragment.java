@@ -164,6 +164,16 @@ public class DataItemDetailFragment extends Fragment {
         }
 
 
+        Button map = (Button) rootView.findViewById(R.id.btViewMap);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mapView = new Intent(view.getContext(), MapsActivity.class);
+                startActivity(mapView);
+
+                //finish();
+            }
+        });
 
         return rootView;
     }

@@ -134,12 +134,8 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
-    public void onClickMap(View view) {
-        setContentView(R.layout.activity_maps);
-        Intent mapView = new Intent(view.getContext(), MapsActivity.class);
-        startActivity(mapView);
+
     }
 
 }
