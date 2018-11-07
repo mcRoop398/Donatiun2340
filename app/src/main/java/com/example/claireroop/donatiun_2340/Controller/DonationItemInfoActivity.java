@@ -145,11 +145,6 @@ public class DonationItemInfoActivity extends AppCompatActivity {
             }
         });
 
-//        DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
-//        itemList.add(donation);
-//        DatabaseReference itemref = _donationRef.child("donations");
-//        itemref.setValue(itemList);
-//        finish();
 
         Button del = (Button) findViewById(R.id.delete_button);
         del.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +154,8 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        
     }
 
 }
