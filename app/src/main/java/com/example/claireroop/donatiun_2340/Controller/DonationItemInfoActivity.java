@@ -69,7 +69,8 @@ public class DonationItemInfoActivity extends AppCompatActivity {
          * Based on previous screen the list can not be empty when trying to edit
          */
         else {
-            item = model.getItems().get(dataItemIndex).getDonationItemsList().get(donationItemIndex);
+            //item = model.getItems().get(dataItemIndex).getDonationItemsList().get(donationItemIndex);
+            item = model.itemView();
         }
 
         ID = findViewById(R.id.DonationID);

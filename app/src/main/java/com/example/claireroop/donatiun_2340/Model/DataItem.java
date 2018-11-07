@@ -28,6 +28,7 @@ public class DataItem {
     private String type;
     private String phone;
     private String website;
+    public ArrayList<DataItem> listContainedIn;
 
     public DataItem(int key, String name, double latitude, double longitude,
                     String address, String city, String state, double zip, String type,
@@ -44,7 +45,10 @@ public class DataItem {
         this.type = type;
         this.phone = phone;
         this.website = website;
+        listContainedIn = (ArrayList) SimpleModel.INSTANCE.getItems();
     }
+
+
 
     public String toString() {
         return name + " - " + key;
@@ -119,5 +123,9 @@ public class DataItem {
 
     public void setWebsite(String website) {
         this.website = website;
+    }
+
+    public DonationItem getItem(int i) {
+        return this.getItem(i);
     }
 }

@@ -28,4 +28,5 @@ public class Model {
     public static AccountList getListOfusers() {
         return listOfusers;
     }
+
 }

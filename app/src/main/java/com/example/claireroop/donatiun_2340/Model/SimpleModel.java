@@ -51,4 +51,16 @@ public class SimpleModel {
         return _currentDataItemIndex;
     }
 
+    public void setCurrentDonationItemIndex(int i) {
+        _currentDonationItemIndex = i;
+    }
+
+    public void setCurrentDataItemIndex(int i) {
+        _currentDataItemIndex = i;
+    }
+
+    public DonationItem itemView() {
+        return items.get(_currentDataItemIndex).getItem(_currentDonationItemIndex);
+    }
+
 }
