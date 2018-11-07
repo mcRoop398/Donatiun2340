@@ -33,7 +33,9 @@ public class SimpleModel {
     public DataItem findItemById(int key) {
         for (DataItem d : items) {
             //if (d.getId() == id) return d;
-            if (d.getKey() == key) { return d; }
+            if (d.getKey() == key) {
+                return d;
+            }
         }
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
@@ -49,6 +51,18 @@ public class SimpleModel {
 
     public int getCurrentDataItemIndex() {
         return _currentDataItemIndex;
+    }
+
+    public void setCurrentDonationItemIndex(int i) {
+        _currentDonationItemIndex = i;
+    }
+
+    public void setCurrentDataItemIndex(int i) {
+        _currentDataItemIndex = i;
+    }
+
+    public DonationItem itemView() {
+        return items.get(_currentDataItemIndex).getItem(_currentDonationItemIndex);
     }
 
 }

@@ -35,6 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     /**
      * onClick handler to transition to login screen.
+     *
      * @param v Login button
      */
     @SuppressWarnings("UnusedParameters")
@@ -50,6 +51,4 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(intent02);
 
     }
-
-
 }

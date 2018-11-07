@@ -16,6 +16,7 @@ public class Model {
 
     /**
      * Retrieve the singleton instance of the model.
+     *
      * @return the instance!
      */
     public static synchronized Model getInstance() {
@@ -28,4 +29,5 @@ public class Model {
     public static AccountList getListOfusers() {
         return listOfusers;
     }
+
 }

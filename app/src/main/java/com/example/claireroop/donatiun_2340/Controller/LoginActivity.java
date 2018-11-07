@@ -40,14 +40,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+
 import com.example.claireroop.donatiun_2340.Model.AccountList;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-
-
 
 
 /**
@@ -94,8 +93,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
      */
-
-
 
 
     @Override
@@ -201,9 +198,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         String password = mPasswordView.getText().toString();
 
 
-
-
-
         boolean cancel = false;
         View focusView = null;
 
@@ -214,7 +208,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
-        } else if(!mAccountList.compareAccountToPassword(email, password)){
+        } else if (!mAccountList.compareAccountToPassword(email, password)) {
             mPasswordView.setError("Invalid Password");
             focusView = mPasswordView;
             cancel = true;
@@ -229,7 +223,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
             cancel = true;
-        } else if (!mAccountList.checkListForUser(email)){
+        } else if (!mAccountList.checkListForUser(email)) {
             mEmailView.setError("Create an account first");
             focusView = mEmailView;
             cancel = true;
@@ -361,13 +355,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                    String databaseEm = (String) dataSnapshot.child("_name").getValue();
-                    //databaseEm = databaseEm.substring(0, databaseEm.indexOf("@"));
+                String databaseEm = (String) dataSnapshot.child("_name").getValue();
+                //databaseEm = databaseEm.substring(0, databaseEm.indexOf("@"));
                 //String databaseEm = (String) dataSnapshot.child("_email").getValue();
-                    Log.e("litttttt", databaseEm);
-                    //checkPassword(enteredEm, databaseEm, databasePass);
-                    Log.e("litty", databaseEm);
-                   // enteredEmail = s;
+                Log.e("litttttt", databaseEm);
+                //checkPassword(enteredEm, databaseEm, databasePass);
+                Log.e("litty", databaseEm);
+                // enteredEmail = s;
                 //}
             }
 
@@ -376,8 +370,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 //                    Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
 //                    startActivity(i);
                     return true;
-                }
-                else {
+                } else {
 //                    mPasswordView.setError(getString(R.string.error_incorrect_password));
 //                    mPasswordView.requestFocus();
                     return false;
