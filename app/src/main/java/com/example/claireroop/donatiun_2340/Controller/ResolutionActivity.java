@@ -111,10 +111,10 @@ public class ResolutionActivity extends AppCompatActivity {
                 model.addItem(new DataItem(key, tokens[1], latitude, longitude, tokens[4], tokens[5],
                         tokens[6], zip, tokens[8], tokens[9], tokens[10]));
 
-                HashMap<String, Object> update = new HashMap<>();
-                DataItem newLocation = new DataItem(key, tokens[1], latitude, longitude, tokens[4], tokens[5], tokens[6], zip, tokens[8], tokens[9], tokens[10]);
-                _personRef = _accountRef.child(newLocation.getName().substring(4, 6));
-                _personRef.setValue(newLocation);
+//                HashMap<String, Object> update = new HashMap<>();
+//                DataItem newLocation = new DataItem(key, tokens[1], latitude, longitude, tokens[4], tokens[5], tokens[6], zip, tokens[8], tokens[9], tokens[10]);
+//                _personRef = _accountRef.child(newLocation.getName().substring(4, 6));
+//                _personRef.setValue(newLocation);
                 //_personRef = _accountRef.push();
 //                update.put("firebaseid", _personRef.getKey());
 //                update.put("name", tokens[1]);

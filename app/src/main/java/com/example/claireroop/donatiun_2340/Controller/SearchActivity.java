@@ -34,52 +34,52 @@ public class SearchActivity extends AppCompatActivity{
 
     }
 
-    public static void searchByCategory(DonationItem donation, String location) {
-        DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference _accountRef = _dbRef.child("donations");
-        final List<String> itemList = new ArrayList<>();
-
-        _accountRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                DatabaseReference _donationRef;
-                for (DataSnapshot x : dataSnapshot.getChildren()) {
-                    if (dataSnapshot.child("category").getValue().equals("shoes")) {
-                        itemList.add(dataSnapshot.child("category").getValue().toString());
-                    }
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public static void searchByName (DonationItem donation, String location) {
-        DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference _accountRef = _dbRef.child("donations");
-        DatabaseReference _donationRef = _accountRef.child(donation.getName());
-        final List<String> itemList = new ArrayList<>();
-
-        _donationRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot x : dataSnapshot.getChildren()) {
-                    DataSnapshot yee = dataSnapshot.child("name");
-                    if (dataSnapshot.child("category").getValue().equals("shoe")) {
-                        itemList.add(dataSnapshot.child("category").getValue().toString());
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
+//    public static void searchByCategory(DonationItem donation, String location) {
+//        DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference _accountRef = _dbRef.child("donations");
+//        final List<String> itemList = new ArrayList<>();
+//
+//        _accountRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                DatabaseReference _donationRef;
+//                for (DataSnapshot x : dataSnapshot.getChildren()) {
+//                    if (dataSnapshot.child("category").getValue().equals("shoes")) {
+//                        itemList.add(dataSnapshot.child("category").getValue().toString());
+//                    }
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
+//
+//    public static void searchByName (DonationItem donation, String location) {
+//        DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference _accountRef = _dbRef.child("donations");
+//        DatabaseReference _donationRef = _accountRef.child(donation.getName());
+//        final List<String> itemList = new ArrayList<>();
+//
+//        _donationRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot x : dataSnapshot.getChildren()) {
+//                    DataSnapshot yee = dataSnapshot.child("name");
+//                    if (dataSnapshot.child("category").getValue().equals("shoe")) {
+//                        itemList.add(dataSnapshot.child("category").getValue().toString());
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 
 }

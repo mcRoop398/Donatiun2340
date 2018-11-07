@@ -36,16 +36,16 @@ public class DonationItemInfoActivity extends AppCompatActivity {
 
     static boolean newDonation = false;
 
-    final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
-    final DatabaseReference _locationRef = _dbRef.child("locations");
-    final DatabaseReference _donationRef = _dbRef.child("donations");
-    DatabaseReference _itemRef;
-    DatabaseReference _itemRef2;
-    DatabaseReference _itemRef3;
-    DatabaseReference _itemRef4;
-    final List<DonationItem> itemList = new ArrayList<>();
-    List<String> realList = new ArrayList<>();
-    DataItem currLocation;
+//    final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+//    final DatabaseReference _locationRef = _dbRef.child("locations");
+//    final DatabaseReference _donationRef = _dbRef.child("donations");
+//    DatabaseReference _itemRef;
+//    DatabaseReference _itemRef2;
+//    DatabaseReference _itemRef3;
+//    DatabaseReference _itemRef4;
+//    final List<DonationItem> itemList = new ArrayList<>();
+//    List<String> realList = new ArrayList<>();
+//    DataItem currLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size()-1);
         final DonationItem item;
         DataItem location = model.getItems().get(dataItemIndex);
-        currLocation = location;
+        //currLocation = location;
 
         //final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
         //final DatabaseReference _donationRef = _dbRef.child("locations");
@@ -126,18 +126,18 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 item.donatorPhoneNumber = phoneNumber.getText().toString();
 
                 //pull in list then update it
-                DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
-                _itemRef = _donationRef.child(ID.getText().toString());
-                _itemRef.setValue(donation);
-
-                Log.e("onClick: ",ID.getText().toString());
-
-                //adds donation name under locations category
-                _itemRef2 = _locationRef.child(currLocation.toString());
-                Log.e("currLocation: ", currLocation.toString());
-                _itemRef3 = _itemRef2.child("Donations");
-                _itemRef4 = _itemRef3.child(ID.getText().toString());
-                _itemRef4.setValue(donation);
+//                DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
+//                _itemRef = _donationRef.child(ID.getText().toString());
+//                _itemRef.setValue(donation);
+//
+//                Log.e("onClick: ",ID.getText().toString());
+//
+//                //adds donation name under locations category
+//                _itemRef2 = _locationRef.child(currLocation.toString());
+//                Log.e("currLocation: ", currLocation.toString());
+//                _itemRef3 = _itemRef2.child("Donations");
+//                _itemRef4 = _itemRef3.child(ID.getText().toString());
+//                _itemRef4.setValue(donation);
                 //itemList.add(donation);
                 //DatabaseReference itemref = _donationRef.child("donations");
                 //itemref.setValue(itemList);
