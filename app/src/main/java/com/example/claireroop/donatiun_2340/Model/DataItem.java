@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by robertwaters on 9/18/17.
  * Edited by Darby Foster on 10/12/18.
- *
+ * <p>
  * DataItem: each individual location
  */
 
@@ -56,25 +56,60 @@ public class DataItem {
 
 
     /**
-     *  GETTERS
+     * GETTERS
      */
 
-    public int getKey() { return key; }
-    public String getName() { return name; }
-    public double getLatitude() { return latitude; }
-    public double getLongitude() { return longitude; }
-    public String getAddress() { return address; }
-    public String getCity() { return city; }
-    public String getState() { return state; }
-    public double getZip() { return zip; }
-    public String getType() { return type; }
-    public String getPhone() { return phone; }
-    public String getWebsite() { return website; }
-    public ArrayList<DonationItem> getDonationItemsList() { return donationItemsList; }
+    public int getKey() {
+        return key;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public double getZip() {
+        return zip;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public ArrayList<DonationItem> getDonationItemsList() {
+        return donationItemsList;
+    }
 
 
     /**
-     *  SETTERS
+     * SETTERS
      */
 
     public void setDonationItemsList(ArrayList<DonationItem> donationItemsList) {

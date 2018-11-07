@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.claireroop.donatiun_2340.Model.DataItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
@@ -33,6 +34,16 @@ public class ResolutionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resolution);
 
+        Button map = (Button) findViewById(R.id.btViewMap);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mapView = new Intent(view.getContext(), MapsActivity.class);
+                startActivity(mapView);
+
+                //finish();
+            }
+        });
     }
 
     public void onClickCancelButton(View v) {
@@ -57,21 +68,26 @@ public class ResolutionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickSearchButton(View view) {
+        Intent intent = new Intent(view.getContext(), SearchActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Open the locationdata.csv file in the /res/raw directory
      * Line Entry format:
-     *   [0] - Key
-     *   [1] - Name **
-     *   [2] - Latitude **
-     *   [3] - Longitude **
-     *   [4] - Street Address **
-     *   [5] - City
-     *   [6] - State
-     *   [7] - Zip
-     *   [8] - Type **
-     *   [9] - Phone **
-     *   [10] - Website
-     *   **must be used/displayed
+     * [0] - Key
+     * [1] - Name **
+     * [2] - Latitude **
+     * [3] - Longitude **
+     * [4] - Street Address **
+     * [5] - City
+     * [6] - State
+     * [7] - Zip
+     * [8] - Type **
+     * [9] - Phone **
+     * [10] - Website
+     * **must be used/displayed
      */
     private void readSDFile() {
         SimpleModel model = SimpleModel.INSTANCE;
@@ -96,8 +112,8 @@ public class ResolutionActivity extends AppCompatActivity {
                         tokens[6], zip, tokens[8], tokens[9], tokens[10]));
 
                 HashMap<String, Object> update = new HashMap<>();
-               DataItem newLocation = new DataItem(key,tokens[1], latitude, longitude, tokens[4], tokens[5], tokens[6], zip, tokens[8], tokens[9], tokens[10]);
-                _personRef = _accountRef.child(newLocation.getName().substring(4 ,6));
+                DataItem newLocation = new DataItem(key, tokens[1], latitude, longitude, tokens[4], tokens[5], tokens[6], zip, tokens[8], tokens[9], tokens[10]);
+                _personRef = _accountRef.child(newLocation.getName().substring(4, 6));
                 _personRef.setValue(newLocation);
                 //_personRef = _accountRef.push();
 //                update.put("firebaseid", _personRef.getKey());

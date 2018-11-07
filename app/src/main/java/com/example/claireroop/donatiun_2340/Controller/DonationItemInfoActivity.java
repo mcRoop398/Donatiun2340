@@ -41,8 +41,8 @@ public class DonationItemInfoActivity extends AppCompatActivity {
 
         final SimpleModel model = SimpleModel.INSTANCE;
         final int dataItemIndex = getIntent().getIntExtra("dataItemIndex", 0);
-        final ArrayList<DonationItem> donationItemList= model.getItems().get(dataItemIndex).getDonationItemsList();
-        final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size()-1);
+        final ArrayList<DonationItem> donationItemList = model.getItems().get(dataItemIndex).getDonationItemsList();
+        final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size() - 1);
         final DonationItem item;
 
         final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
@@ -54,7 +54,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         /**
          * Creating new donation item - to end of the list
          */
-        if(newDonation == true) {
+        if (newDonation == true) {
             DonationItem newDonation = new DonationItem("", "", "",
                     "", "", "",
                     "", "",
@@ -81,9 +81,6 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         itemName = findViewById(R.id.ItemName);
         donor = findViewById(R.id.Donor);
         phoneNumber = findViewById(R.id.Phone_Number);
-
-
-
 
 
         ID.setText(item.ID);
@@ -120,6 +117,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
             }
         });
 
+
 //        DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
 //        itemList.add(donation);
 //        DatabaseReference itemref = _donationRef.child("donations");
@@ -135,5 +133,4 @@ public class DonationItemInfoActivity extends AppCompatActivity {
             }
         });
     }
-
 }
