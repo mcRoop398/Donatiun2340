@@ -68,6 +68,11 @@ public class ResolutionActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickSearchButton(View view) {
+        Intent intent = new Intent(view.getContext(), SearchActivity.class);
+        startActivity(intent);
+    }
+
     /**
      * Open the locationdata.csv file in the /res/raw directory
      * Line Entry format:
