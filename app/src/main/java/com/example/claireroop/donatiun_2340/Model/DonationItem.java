@@ -65,6 +65,10 @@ Donator's Phone #: String
 //        return ID;
 //    }
 
+    public String getName() {
+        return itemName;
+    }
+
     public void addedFlag() {
         this.isInList = true;
     }
