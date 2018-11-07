@@ -61,6 +61,10 @@ Donator's Phone #: String
     public ArrayList<DonationItem> listContainedIn;
     public boolean isInList;
 
+//    public String getID() {
+//        return ID;
+//    }
+
     public void addedFlag() {
         this.isInList = true;
     }

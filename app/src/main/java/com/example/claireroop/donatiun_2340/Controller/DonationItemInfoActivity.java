@@ -6,11 +6,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
 
+import com.example.claireroop.donatiun_2340.Model.DataItem;
 import com.example.claireroop.donatiun_2340.Model.DonationItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
@@ -34,6 +36,17 @@ public class DonationItemInfoActivity extends AppCompatActivity {
 
     static boolean newDonation = false;
 
+    final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+    final DatabaseReference _locationRef = _dbRef.child("locations");
+    final DatabaseReference _donationRef = _dbRef.child("donations");
+    DatabaseReference _itemRef;
+    DatabaseReference _itemRef2;
+    DatabaseReference _itemRef3;
+    DatabaseReference _itemRef4;
+    final List<DonationItem> itemList = new ArrayList<>();
+    List<String> realList = new ArrayList<>();
+    DataItem currLocation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,10 +57,12 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         final ArrayList<DonationItem> donationItemList= model.getItems().get(dataItemIndex).getDonationItemsList();
         final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size()-1);
         final DonationItem item;
+        DataItem location = model.getItems().get(dataItemIndex);
+        currLocation = location;
 
-        final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
-        final DatabaseReference _donationRef = _dbRef.child("locations");
-        final List<Object> itemList = new ArrayList<>();
+        //final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
+        //final DatabaseReference _donationRef = _dbRef.child("locations");
+        //final List<Object> itemList = new ArrayList<>();
         //final DonationItem donation;
 
 
@@ -112,9 +127,20 @@ public class DonationItemInfoActivity extends AppCompatActivity {
 
                 //pull in list then update it
                 DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
-                itemList.add(donation);
-                DatabaseReference itemref = _donationRef.child("donations");
-                itemref.setValue(itemList);
+                _itemRef = _donationRef.child(ID.getText().toString());
+                _itemRef.setValue(donation);
+
+                Log.e("onClick: ",ID.getText().toString());
+
+                //adds donation name under locations category
+                _itemRef2 = _locationRef.child(currLocation.toString());
+                Log.e("currLocation: ", currLocation.toString());
+                _itemRef3 = _itemRef2.child("Donations");
+                _itemRef4 = _itemRef3.child(ID.getText().toString());
+                _itemRef4.setValue(donation);
+                //itemList.add(donation);
+                //DatabaseReference itemref = _donationRef.child("donations");
+                //itemref.setValue(itemList);
                 finish();
             }
         });
