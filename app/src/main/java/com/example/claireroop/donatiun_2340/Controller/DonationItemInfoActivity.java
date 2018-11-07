@@ -41,8 +41,8 @@ public class DonationItemInfoActivity extends AppCompatActivity {
 
         final SimpleModel model = SimpleModel.INSTANCE;
         final int dataItemIndex = getIntent().getIntExtra("dataItemIndex", 0);
-        final ArrayList<DonationItem> donationItemList= model.getItems().get(dataItemIndex).getDonationItemsList();
-        final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size()-1);
+        final ArrayList<DonationItem> donationItemList = model.getItems().get(dataItemIndex).getDonationItemsList();
+        final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size() - 1);
         final DonationItem item;
 
         final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
@@ -54,7 +54,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         /**
          * Creating new donation item - to end of the list
          */
-        if(newDonation == true) {
+        if (newDonation == true) {
             DonationItem newDonation = new DonationItem("", "", "",
                     "", "", "",
                     "", "",
@@ -80,9 +80,6 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         itemName = findViewById(R.id.ItemName);
         donor = findViewById(R.id.Donor);
         phoneNumber = findViewById(R.id.Phone_Number);
-
-
-
 
 
         ID.setText(item.ID);

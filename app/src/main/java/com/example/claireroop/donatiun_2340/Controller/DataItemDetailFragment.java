@@ -28,10 +28,8 @@ import java.util.ArrayList;
 
 
 /**
- *
  * Class Use: Individual Location Screen **************************
- *
- * */
+ */
 
 
 /**
@@ -59,6 +57,7 @@ public class DataItemDetailFragment extends Fragment {
     //private Button map;
 
     private View rootView;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -100,8 +99,8 @@ public class DataItemDetailFragment extends Fragment {
         if (mItem != null) {
 
             final String[] donationID = new String[mItem.getDonationItemsList().size()];
-            for(int i = 0; i < donationID.length; i++){
-                donationID[i] =  mItem.getDonationItemsList().get(i).ID;
+            for (int i = 0; i < donationID.length; i++) {
+                donationID[i] = mItem.getDonationItemsList().get(i).ID;
             }
             donationSpinner = rootView.findViewById(R.id.Donations);
             adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, donationID);
@@ -116,7 +115,7 @@ public class DataItemDetailFragment extends Fragment {
                 public void onClick(View v) {
                     DonationItemInfoActivity.newDonation = true;
                     Intent i = new Intent(getContext(), DonationItemInfoActivity.class);
-                    i.putExtra("dataItemIndex", mItem.getKey()-1); //Index of current Location
+                    i.putExtra("dataItemIndex", mItem.getKey() - 1); //Index of current Location
                     startActivity(i);
                     editDonation.setError(null);
                     // addNewDonation screen
@@ -126,14 +125,13 @@ public class DataItemDetailFragment extends Fragment {
             editDonation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!mItem.getDonationItemsList().isEmpty()){
+                    if (!mItem.getDonationItemsList().isEmpty()) {
                         DonationItemInfoActivity.newDonation = false;
                         Intent i = new Intent(getContext(), DonationItemInfoActivity.class);
-                        i.putExtra("dataItemIndex", mItem.getKey()-1); //Index of current Location
+                        i.putExtra("dataItemIndex", mItem.getKey() - 1); //Index of current Location
                         i.putExtra("donationIndex", donationSpinner.getSelectedItemPosition()); //Index of current Donation
                         startActivity(i);
-                    }
-                    else{
+                    } else {
                         editDonation.setError("No donations to edit");
                     }
                     // check selected spinner donation
@@ -171,8 +169,8 @@ public class DataItemDetailFragment extends Fragment {
         super.onResume();
 
         final String[] donationID = new String[mItem.getDonationItemsList().size()];
-        for(int i = 0; i < donationID.length; i++){
-            donationID[i] =  mItem.getDonationItemsList().get(i).ID;
+        for (int i = 0; i < donationID.length; i++) {
+            donationID[i] = mItem.getDonationItemsList().get(i).ID;
         }
         donationSpinner = rootView.findViewById(R.id.Donations);
         adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, donationID);
@@ -183,14 +181,8 @@ public class DataItemDetailFragment extends Fragment {
     }
 
 
-
-
-
-
-
 //        Intent mapView = new Intent(getContext(), MapsActivity.class);
 //        startActivity(mapView);
-
 
 
 }

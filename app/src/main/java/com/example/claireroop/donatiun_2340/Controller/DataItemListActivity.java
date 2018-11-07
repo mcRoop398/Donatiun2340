@@ -27,10 +27,8 @@ import com.example.claireroop.donatiun_2340.R;
 import java.util.List;
 
 /**
- *
  * Class Use: List of Locations Screen **************************
- *
- * */
+ */
 
 /**
  * An activity representing a list of Data Items. This activity

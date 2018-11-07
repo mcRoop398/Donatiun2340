@@ -33,7 +33,9 @@ public class SimpleModel {
     public DataItem findItemById(int key) {
         for (DataItem d : items) {
             //if (d.getId() == id) return d;
-            if (d.getKey() == key) { return d; }
+            if (d.getKey() == key) {
+                return d;
+            }
         }
         Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;

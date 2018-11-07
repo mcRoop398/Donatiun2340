@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         _AccountTypeSpinner = findViewById(R.id.AccountTypeSpinner);
 
         //set up adapted for spinner
-        ArrayAdapter<Role> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, Role.values());
+        ArrayAdapter<Role> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Role.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         _AccountTypeSpinner.setAdapter(adapter);
     }
@@ -74,20 +74,17 @@ public class RegisterActivity extends AppCompatActivity {
          *      - if user email is brand new => make user and go to resolution screen
          *      - else if user email already exists (i.e. linked to an account) => Display Email Error
          */
-        if(!isEmailValid(_email.getText().toString())){
+        if (!isEmailValid(_email.getText().toString())) {
             _email.setError("Email Invalid");
-        }
-        else if (!isPasswordValid(_password.getText().toString())) {
+        } else if (!isPasswordValid(_password.getText().toString())) {
             _password.setError(getString(R.string.error_invalid_password));
-        }
-        else if(_name.getText().toString().matches("")) {
+        } else if (_name.getText().toString().matches("")) {
             _name.setError("Must Fill Out Name");
-        }
-        else if(_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem())){
+        } else if (_list.createNewUser(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), (Role) _AccountTypeSpinner.getSelectedItem())) {
             HashMap<String, Object> update = new HashMap<>();
 
             Account newPerson = new Account(_email.getText().toString(), _password.getText().toString(), _name.getText().toString(), _role);
-            _personRef = _accountRef.child(newPerson.get_email().substring(0,newPerson.get_email().indexOf("@")));
+            _personRef = _accountRef.child(newPerson.get_email().substring(0, newPerson.get_email().indexOf("@")));
             _personRef.setValue(newPerson);
 //            update.put("name", _name.getText().toString());
 //            update.put("email", _email.getText().toString());
@@ -96,8 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
             //_personRef.updateChildren(update);
             Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
             startActivity(i);
-        }
-        else{
+        } else {
             //Say user already created.
             _email.setError("Email already has an account linked.");
         }

@@ -71,18 +71,18 @@ public class ResolutionActivity extends AppCompatActivity {
     /**
      * Open the locationdata.csv file in the /res/raw directory
      * Line Entry format:
-     *   [0] - Key
-     *   [1] - Name **
-     *   [2] - Latitude **
-     *   [3] - Longitude **
-     *   [4] - Street Address **
-     *   [5] - City
-     *   [6] - State
-     *   [7] - Zip
-     *   [8] - Type **
-     *   [9] - Phone **
-     *   [10] - Website
-     *   **must be used/displayed
+     * [0] - Key
+     * [1] - Name **
+     * [2] - Latitude **
+     * [3] - Longitude **
+     * [4] - Street Address **
+     * [5] - City
+     * [6] - State
+     * [7] - Zip
+     * [8] - Type **
+     * [9] - Phone **
+     * [10] - Website
+     * **must be used/displayed
      */
     private void readSDFile() {
         SimpleModel model = SimpleModel.INSTANCE;
@@ -107,8 +107,8 @@ public class ResolutionActivity extends AppCompatActivity {
                         tokens[6], zip, tokens[8], tokens[9], tokens[10]));
 
                 HashMap<String, Object> update = new HashMap<>();
-               DataItem newLocation = new DataItem(key,tokens[1], latitude, longitude, tokens[4], tokens[5], tokens[6], zip, tokens[8], tokens[9], tokens[10]);
-                _personRef = _accountRef.child(newLocation.getName().substring(4 ,6));
+                DataItem newLocation = new DataItem(key, tokens[1], latitude, longitude, tokens[4], tokens[5], tokens[6], zip, tokens[8], tokens[9], tokens[10]);
+                _personRef = _accountRef.child(newLocation.getName().substring(4, 6));
                 _personRef.setValue(newLocation);
                 //_personRef = _accountRef.push();
 //                update.put("firebaseid", _personRef.getKey());
