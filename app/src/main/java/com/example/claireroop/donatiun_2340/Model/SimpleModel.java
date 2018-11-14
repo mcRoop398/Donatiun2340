@@ -37,7 +37,7 @@ public class SimpleModel {
                 return d;
             }
         }
-        Log.d("MYAPP", "Warning - Failed to find key: " + key);
+        //Log.d("MYAPP", "Warning - Failed to find key: " + key);
         return null;
     }
 
