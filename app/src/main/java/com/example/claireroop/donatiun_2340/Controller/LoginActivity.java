@@ -380,18 +380,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 //}
             }
 
-            public boolean checkPassword(String email, String enteredEmail, String password) {
-                if (enteredEmail.equals(email)) {
-//                    Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
-//                    startActivity(i);
-                    return true;
-                } else {
-//                    mPasswordView.setError(getString(R.string.error_incorrect_password));
-//                    mPasswordView.requestFocus();
-                    return false;
-                }
-                //return false;
-            }
+//            public boolean checkPassword(String email, String enteredEmail, String password) {
+//                if (enteredEmail.equals(email)) {
+////                    Intent i = new Intent(getApplicationContext(), ResolutionActivity.class);
+////                    startActivity(i);
+//                    return true;
+//                } else {
+////                    mPasswordView.setError(getString(R.string.error_incorrect_password));
+////                    mPasswordView.requestFocus();
+//                    return false;
+//                }
+//                //return false;
+//            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

@@ -43,9 +43,9 @@ public class DonationItemInfoActivity extends AppCompatActivity {
 //    DatabaseReference _itemRef2;
 //    DatabaseReference _itemRef3;
 //    DatabaseReference _itemRef4;
-//    final List<DonationItem> itemList = new ArrayList<>();
-//    List<String> realList = new ArrayList<>();
-//    DataItem currLocation;
+    final List<DonationItem> itemList = new ArrayList<>();
+    List<String> realList = new ArrayList<>();
+    DataItem currLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +54,11 @@ public class DonationItemInfoActivity extends AppCompatActivity {
 
         final SimpleModel model = SimpleModel.INSTANCE;
         final int dataItemIndex = getIntent().getIntExtra("dataItemIndex", 0);
-        final ArrayList<DonationItem> donationItemList= model.getItems().get(dataItemIndex).getDonationItemsList();
-        final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size()-1);
+        final ArrayList<DonationItem> donationItemList = model.getItems().get(dataItemIndex).getDonationItemsList();
+        final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size() - 1);
         final DonationItem item;
         DataItem location = model.getItems().get(dataItemIndex);
-        //currLocation = location;
+        currLocation = location;
 
         //final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
         //final DatabaseReference _donationRef = _dbRef.child("locations");
@@ -69,7 +69,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         /**
          * Creating new donation item - to end of the list
          */
-        if(newDonation == true) {
+        if (newDonation == true) {
             DonationItem newDonation = new DonationItem("", "", "",
                     "", "", "",
                     "", "",
@@ -84,7 +84,8 @@ public class DonationItemInfoActivity extends AppCompatActivity {
          * Based on previous screen the list can not be empty when trying to edit
          */
         else {
-            item = model.getItems().get(dataItemIndex).getDonationItemsList().get(donationItemIndex);
+            //item = model.getItems().get(dataItemIndex).getDonationItemsList().get(donationItemIndex);
+            item = model.itemView();
         }
 
         ID = findViewById(R.id.DonationID);
@@ -95,9 +96,6 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         itemName = findViewById(R.id.ItemName);
         donor = findViewById(R.id.Donor);
         phoneNumber = findViewById(R.id.Phone_Number);
-
-
-
 
 
         ID.setText(item.ID);
@@ -116,28 +114,22 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                item.ID = ID.getText().toString();
-                item.category = category.getText().toString();
-                item.color = color.getText().toString();
-                item.condition = condition.getText().toString();
-                item.value = value.getText().toString();
-                item.itemName = itemName.getText().toString();
-                item.donatorName = donor.getText().toString();
-                item.donatorPhoneNumber = phoneNumber.getText().toString();
-
+                item.save(itemName.getText().toString(), category.getText().toString(),
+                        ID.getText().toString(), color.getText().toString(),
+                        condition.getText().toString(), value.getText().toString(),
+                        donor.getText().toString(), phoneNumber.getText().toString(),
+                        donationItemIndex);
                 //pull in list then update it
-//                DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
-//                _itemRef = _donationRef.child(ID.getText().toString());
-//                _itemRef.setValue(donation);
-//
-//                Log.e("onClick: ",ID.getText().toString());
-//
-//                //adds donation name under locations category
-//                _itemRef2 = _locationRef.child(currLocation.toString());
-//                Log.e("currLocation: ", currLocation.toString());
-//                _itemRef3 = _itemRef2.child("Donations");
-//                _itemRef4 = _itemRef3.child(ID.getText().toString());
-//                _itemRef4.setValue(donation);
+                //DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
+                //_itemRef = _donationRef.child(ID.getText().toString());
+                //_itemRef.setValue(donation);
+                //Log.e("onClick: ",ID.getText().toString());
+                //adds donation name under locations category
+                //_itemRef2 = _locationRef.child(currLocation.toString());
+                //Log.e("currLocation: ", currLocation.toString());
+                //_itemRef3 = _itemRef2.child("Donations");
+                //_itemRef4 = _itemRef3.child(ID.getText().toString());
+                //_itemRef4.setValue(donation);
                 //itemList.add(donation);
                 //DatabaseReference itemref = _donationRef.child("donations");
                 //itemref.setValue(itemList);
@@ -145,6 +137,12 @@ public class DonationItemInfoActivity extends AppCompatActivity {
             }
         });
 
+
+//        DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
+//        itemList.add(donation);
+//        DatabaseReference itemref = _donationRef.child("donations");
+//        itemref.setValue(itemList);
+//        finish();
 
         Button del = (Button) findViewById(R.id.delete_button);
         del.setOnClickListener(new View.OnClickListener() {
@@ -154,8 +152,5 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        
     }
-
 }
