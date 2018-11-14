@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.claireroop.donatiun_2340.Model.Model;
+import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
 
 import java.util.ArrayList;
@@ -54,6 +55,8 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+
+    public static final LoginActivity INSTANCE = new LoginActivity();
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -100,6 +103,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
+
+        //getCredentials(mEmailView, mPasswordView);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
@@ -179,6 +184,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
+
     /**
      * Attempts to sign in or register the account specified by the login form.
      * If there are form errors (invalid email, missing fields, etc.), the
@@ -203,16 +209,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mAccountList = Model.getListOfusers();
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+        //checking password creds
+        cancel = checkPassword(email, password);
+        if (cancel == true) {
             focusView = mPasswordView;
-            cancel = true;
-        } else if (!mAccountList.compareAccountToPassword(email, password)) {
-            mPasswordView.setError("Invalid Password");
-            focusView = mPasswordView;
-            cancel = true;
         }
+
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
@@ -240,6 +242,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
+    }
+
+    public boolean checkPassword(String email, String password) {
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+            mPasswordView.setError(getString(R.string.error_invalid_password));
+            //focusView = mPasswordView;
+            return true;
+        } else if (!mAccountList.compareAccountToPassword(email, password)) {
+            mPasswordView.setError("Invalid Password");
+            //focusView = mPasswordView;
+            return true;
+        }
+        return false;
     }
 
     private boolean isEmailValid(String email) {
