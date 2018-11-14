@@ -67,7 +67,7 @@ public class AccountList {
      *
      * @param user
      */
-    private void addUser(Account user) {
+    public void addUser(Account user) {
         this.userList.add(user);
     }
 

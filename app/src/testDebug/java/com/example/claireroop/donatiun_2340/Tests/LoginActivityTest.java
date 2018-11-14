@@ -18,7 +18,7 @@ Claire Roop's JUnit Test
 
 public class LoginActivityTest {
 
-    LoginActivity activity;
+    LoginActivity activity = new LoginActivity();
     AccountList userList;
 
     Account personSh;
@@ -38,17 +38,17 @@ public class LoginActivityTest {
     @Before
     public void setUp() throws Exception {
         personSh = new Account("bob@bob.com", "hi", "Bob", Role.ADMIN);
-        userList.createNewUser("bob@bob.com", "hi", "Bob", Role.ADMIN);
+//        userList.createNewUser("bob@bob.com", "hi", "Bob", Role.ADMIN);
         emailSh = "bob@bob.com";
         passwordSh = "hi";
 
         personIn = new Account("bob@bob.com", "hi@hi", "Bob", Role.ADMIN);
-        userList.createNewUser("bob@bob.com", "hi@hi", "Bob", Role.ADMIN);
+        //userList.createNewUser("bob@bob.com", "hi@hi", "Bob", Role.ADMIN);
         emailIn = "bob@bob.com";
         passwordIn = "hi@hi";
 
         personG = new Account("bob@bob.com", "hello", "Bob", Role.ADMIN);
-        userList.createNewUser("bob@bob.com", "hello", "Bob", Role.ADMIN);
+        //userList.createNewUser("bob@bob.com", "hello", "Bob", Role.ADMIN);
         emailG = "bob@bob.com";
         passwordG = "hello";
     }
