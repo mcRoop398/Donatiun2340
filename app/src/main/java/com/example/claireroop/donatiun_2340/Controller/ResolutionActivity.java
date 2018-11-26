@@ -2,16 +2,22 @@ package com.example.claireroop.donatiun_2340.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.claireroop.donatiun_2340.Model.DataItem;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -72,6 +78,35 @@ public class ResolutionActivity extends AppCompatActivity {
         Intent intent = new Intent(view.getContext(), SearchActivity.class);
         startActivity(intent);
     }
+
+    //Button logTokenButton = findViewById(R.id.logTokenButton);
+//        logTokenButton.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            // Get token
+//            FirebaseInstanceId.getInstance().getInstanceId()
+//                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+//                            if (!task.isSuccessful()) {
+//                                Log.w(TAG, "getInstanceId failed", task.getException());
+//                                return;
+//                            }
+//
+//                            // Get new Instance ID token
+//                            String token = task.getResult().getToken();
+//
+//                            // Log and toast
+//                            String msg = getString(R.string.msg_token_fmt, token);
+//                            Log.d(TAG, msg);
+//                            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//
+//
+//        }
+//    });
+//}
 
     /**
      * Open the locationdata.csv file in the /res/raw directory

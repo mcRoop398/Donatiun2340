@@ -82,7 +82,7 @@ public class JUnitTestDarby {
     @Test
     public void testExistingUser() {
         // passes if user already exists in database
-        assertEquals("user must already exist in database", 4,
+        assertEquals("user must already exist in database", 0,
                 account.registerUser(nameGood, emailGood, passwordGood, role2));
     }
 }

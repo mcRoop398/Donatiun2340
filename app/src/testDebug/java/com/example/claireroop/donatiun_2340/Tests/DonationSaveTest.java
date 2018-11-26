@@ -12,6 +12,10 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/*
+Tommy Landman's JUnit Test
+ */
+
 public class DonationSaveTest {
 
     DonationItem donation;
