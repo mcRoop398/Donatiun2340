@@ -33,6 +33,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.claireroop.donatiun_2340.EasterEggAct;
 import com.example.claireroop.donatiun_2340.Model.Model;
 import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
@@ -135,6 +136,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        Button easter = (Button) findViewById(R.id.easter);
+        easter.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onEaster(v);
             }
         });
 
@@ -484,8 +493,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             Intent i = new Intent(getApplicationContext(), WelcomeActivity.class);
             startActivity(i);
 
-            //finish();
         }
-
+    }
+    public void onEaster(View v) {
+        Intent i = new Intent(getApplicationContext(), EasterEggAct.class);
+        startActivity(i);
     }
 }
