@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/Donor"
-        android:layout_width="122dp"
-        android:layout_height="46dp"
+        android:layout_width="125dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -19,24 +19,24 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintVertical_bias="0.624" />
 
     <EditText
         android:id="@+id/Category"
         android:layout_width="124dp"
         android:layout_height="40dp"
         android:layout_marginBottom="1dp"
-        android:layout_marginEnd="161dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="@string/Category"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/Color"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ItemName"
         app:layout_constraintVertical_bias="0.0" />
@@ -46,21 +46,21 @@
         android:layout_width="124dp"
         android:layout_height="40dp"
         android:layout_marginBottom="1dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="@string/Color"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/Condition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Category" />
 
     <EditText
         android:id="@+id/Phone_Number"
-        android:layout_width="181dp"
-        android:layout_height="48dp"
+        android:layout_width="125dp"
+        android:layout_height="43dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -70,17 +70,17 @@
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.679"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77" />
+        app:layout_constraintVertical_bias="0.752" />
 
     <EditText
         android:id="@+id/Value"
-        android:layout_width="105dp"
-        android:layout_height="43dp"
+        android:layout_width="125dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="30dp"
-        android:layout_marginEnd="179dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="1dp"
         android:ems="10"
@@ -88,7 +88,7 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/Donor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Condition" />
 
@@ -97,29 +97,29 @@
         android:layout_width="124dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/ID"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <EditText
         android:id="@+id/Condition"
         android:layout_width="124dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
         android:hint="@string/Condition"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/Value"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Color" />
 
@@ -128,7 +128,7 @@
         android:layout_width="124dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -136,10 +136,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintVertical_bias="0.184" />
 
     <TextView
         android:id="@+id/itemID_textview"
@@ -150,12 +150,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/item_id"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintEnd_toStartOf="@+id/DonationID"
+        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.104" />
 
     <TextView
         android:id="@+id/itemName_textview"
@@ -166,12 +168,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/item_name"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintEnd_toStartOf="@+id/ItemName"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintVertical_bias="0.189" />
 
     <TextView
         android:id="@+id/category_textview"
@@ -182,12 +186,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/category"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintEnd_toStartOf="@+id/Category"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.263" />
 
     <TextView
         android:id="@+id/textView5"
@@ -198,28 +204,32 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/donor"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintEnd_toStartOf="@+id/Donor"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.611" />
+        app:layout_constraintVertical_bias="0.636" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="121dp"
-        android:layout_height="39dp"
+        android:layout_width="105dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/donor_phone_number"
+        android:text="Donor Cell #: "
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintEnd_toStartOf="@+id/Phone_Number"
+        app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.769" />
+        app:layout_constraintVertical_bias="0.759" />
 
     <TextView
         android:id="@+id/header_textview"
@@ -230,12 +240,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/item_and_donor_information"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.002" />
+        app:layout_constraintVertical_bias="0.017" />
 
     <TextView
         android:id="@+id/color_textview"
@@ -246,28 +257,32 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/color"
+        android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintEnd_toStartOf="@+id/Color"
+        app:layout_constraintHorizontal_bias="0.577"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.348" />
 
     <TextView
         android:id="@+id/condition_textview"
-        android:layout_width="66dp"
-        android:layout_height="15dp"
+        android:layout_width="94dp"
+        android:layout_height="25dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/condition"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintEnd_toStartOf="@+id/Condition"
+        app:layout_constraintHorizontal_bias="0.368"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.387" />
+        app:layout_constraintVertical_bias="0.436" />
 
     <TextView
         android:id="@+id/value_textview"
@@ -278,12 +293,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/value"
+        android:textAlignment="textEnd"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintEnd_toStartOf="@+id/Value"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.474" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/delete_button"
