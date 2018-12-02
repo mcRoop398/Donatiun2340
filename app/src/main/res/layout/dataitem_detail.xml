@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Location Information"
+        android:textAlignment="center"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Title" />
 
     <TextView

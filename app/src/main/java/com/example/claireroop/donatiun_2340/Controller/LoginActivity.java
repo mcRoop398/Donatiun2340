@@ -3,6 +3,7 @@ package com.example.claireroop.donatiun_2340.Controller;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.print.PrintAttributes;
@@ -25,6 +26,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -54,7 +56,7 @@ import com.google.firebase.database.ValueEventListener;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 
     public static final LoginActivity INSTANCE = new LoginActivity();
@@ -82,6 +84,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private AccountList mAccountList;
+    private int lockOut;
 
     //String enteredEmail;
 
@@ -102,9 +105,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         // Set up the login form.
 
+        lockOut = 0;
         //getCredentials(mEmailView, mPasswordView);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -203,6 +208,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (mAuthTask != null) {
             return;
         }
+        if(lockOut >= 3){
+            mPasswordView.setError("Locked - Back Out and Try Again.");
+            return;
+        }
 
         // Reset errors.
         mEmailView.setError(null);
@@ -243,6 +252,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
+            lockOut+=1;
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to

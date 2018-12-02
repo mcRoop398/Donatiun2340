@@ -1,10 +1,12 @@
 package com.example.claireroop.donatiun_2340.Controller;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 
 import com.example.claireroop.donatiun_2340.R;
 import com.google.firebase.database.DatabaseReference;
@@ -15,11 +17,12 @@ import java.util.HashMap;
 /**
  * This activity is what first greets users when they enter the app.
  */
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_welcome);
 
         DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();

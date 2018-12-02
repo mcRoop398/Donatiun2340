@@ -21,6 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+
+
         <activity
             android:name=".Controller.LoginActivity"
             android:label="@string/app_name" />
@@ -37,6 +41,7 @@
             android:name=".Controller.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".Controller.ResolutionActivity"
             android:label="@string/title_activity_resolution"
