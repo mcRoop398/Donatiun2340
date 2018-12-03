@@ -6,10 +6,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.print.PrintAttributes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
 import android.content.CursorLoader;
@@ -33,11 +31,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.claireroop.donatiun_2340.EasterEggAct;
 import com.example.claireroop.donatiun_2340.Model.Model;
-import com.example.claireroop.donatiun_2340.Model.SimpleModel;
 import com.example.claireroop.donatiun_2340.R;
 
 import java.util.ArrayList;
@@ -388,15 +383,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         _personRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //for (DataSnapshot snap : dataSnapshot.getChildren()) {
                 String databaseEm = (String) dataSnapshot.child("_name").getValue();
-                //databaseEm = databaseEm.substring(0, databaseEm.indexOf("@"));
-                //String databaseEm = (String) dataSnapshot.child("_email").getValue();
                 Log.e("litttttt", databaseEm);
-                //checkPassword(enteredEm, databaseEm, databasePass);
                 Log.e("litty", databaseEm);
-                // enteredEmail = s;
-                //}
             }
 
 //            public boolean checkPassword(String email, String enteredEmail, String password) {

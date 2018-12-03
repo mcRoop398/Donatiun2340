@@ -57,8 +57,7 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         final ArrayList<DonationItem> donationItemList = model.getItems().get(dataItemIndex).getDonationItemsList();
         final int donationItemIndex = getIntent().getIntExtra("donationIndex", donationItemList.size() - 1);
         final DonationItem item;
-        DataItem location = model.getItems().get(dataItemIndex);
-        currLocation = location;
+        currLocation = model.getLocation(dataItemIndex);
 
         //final DatabaseReference _dbRef = FirebaseDatabase.getInstance().getReference();
         //final DatabaseReference _donationRef = _dbRef.child("locations");
@@ -69,15 +68,8 @@ public class DonationItemInfoActivity extends AppCompatActivity {
         /**
          * Creating new donation item - to end of the list
          */
-        if (newDonation == true) {
-            DonationItem newDonation = new DonationItem("", "", "",
-                    "", "", "",
-                    "", "",
-                    model.getItems().get(dataItemIndex).getDonationItemsList());
-            //add new donation to list
-            donationItemList.add(donationItemList.size(), newDonation);
-            //item is the newDonation
-            item = newDonation;
+        if (newDonation) {
+            item = model.createItem(dataItemIndex);
         }
         /**
          * Editing current donation item
@@ -119,20 +111,6 @@ public class DonationItemInfoActivity extends AppCompatActivity {
                         condition.getText().toString(), value.getText().toString(),
                         donor.getText().toString(), phoneNumber.getText().toString(),
                         donationItemIndex);
-                //pull in list then update it
-                //DonationItem donation = new DonationItem(itemName.getText().toString(), category.getText().toString(), ID.getText().toString(), color.getText().toString(), condition.getText().toString(), value.getText().toString(), donor.getText().toString(), phoneNumber.getText().toString());
-                //_itemRef = _donationRef.child(ID.getText().toString());
-                //_itemRef.setValue(donation);
-                //Log.e("onClick: ",ID.getText().toString());
-                //adds donation name under locations category
-                //_itemRef2 = _locationRef.child(currLocation.toString());
-                //Log.e("currLocation: ", currLocation.toString());
-                //_itemRef3 = _itemRef2.child("Donations");
-                //_itemRef4 = _itemRef3.child(ID.getText().toString());
-                //_itemRef4.setValue(donation);
-                //itemList.add(donation);
-                //DatabaseReference itemref = _donationRef.child("donations");
-                //itemref.setValue(itemList);
                 finish();
             }
         });

@@ -86,7 +86,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".EasterEggAct"></activity>
+        <activity android:name=".Controller.EasterEggAct"></activity>
     </application>
 
 </manifest>

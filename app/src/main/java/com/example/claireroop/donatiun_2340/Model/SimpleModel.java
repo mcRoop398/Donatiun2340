@@ -65,4 +65,22 @@ public class SimpleModel {
         return items.get(_currentDataItemIndex).getItem(_currentDonationItemIndex);
     }
 
+    public DataItem getLocation(int i) {
+        if (i >= 0 && i < items.size())
+            return items.get(i);
+        else
+            return null;
+    }
+
+    public DonationItem createItem(int i) {
+        DonationItem newDonation = new DonationItem("", "", "",
+                "", "", "",
+                "", "");
+        ArrayList<DonationItem> donationItemList = items.get(i).getDonationItemsList();
+        //add new donation to list
+        donationItemList.add(donationItemList.size(), newDonation);
+        //item is the newDonation
+        return newDonation;
+    }
+
 }
